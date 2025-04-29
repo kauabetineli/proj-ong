@@ -52,4 +52,16 @@ public class UsuarioController {
 
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(
+            @PathVariable Integer id
+    ) {
+        boolean deleted = service.delete(id);
+        if (deleted) {
+            return ResponseEntity.ok("Usuário deletado com sucesso");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

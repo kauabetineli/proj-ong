@@ -33,15 +33,6 @@ public class UsuarioService {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Filtra e recupera uma lista de usuários com base em parâmetros específicos de busca.
-     * O método suporta filtragem por atributos como 'id', 'nome', 'setor' e 'cpf'.
-     *
-     * @param parametros um mapa contendo critérios de busca onde as chaves são nomes de atributos
-     *                   (ex: "id", "nome") e os valores são os valores correspondentes para filtro.
-     * @return uma lista de usuários filtrados representados como {@link UsuarioDTO}, ou uma lista vazia
-     * se nenhum usuário corresponder aos critérios.
-     */
     public List<UsuarioDTO> filtrarUsuarios(Map<String, String> parametros) {
 //        if(parametros.isEmpty()) throw new IllegalArgumentException("Necessario informar um parametro");
 
@@ -75,6 +66,14 @@ public class UsuarioService {
     public Optional<UsuarioDetalhesDTO> findById(Integer id) {
         return repository.findById(id)
                 .map(mapper::toDetalhesDto);
+    }
+
+    public boolean delete(Integer id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
 
