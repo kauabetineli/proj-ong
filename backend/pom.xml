@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.github</groupId>
+	<artifactId>onganiza</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>onganiza</name>
+	<description>Criação do Projeto ONGaniza para a Disciplina de Engenharia de Software II na Universidade do Vale do Itajaí (UNIVALI)</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+		<org.mapstruct.version>1.6.3</org.mapstruct.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok-mapstruct-binding</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding -->
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+						<dependency>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>0.2.0</version>
+						</dependency>
+					</annotationProcessorPaths>
+					<compilerArgs>
+						<compilerArg>
+							-Amapstruct.defaultComponentModel=spring
+						</compilerArg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<annotationProcessorPaths>-->
+<!--						<path>-->
+<!--							<groupId>org.projectlombok</groupId>-->
+<!--							<artifactId>lombok</artifactId>-->
+<!--						</path>-->
+
+<!--					</annotationProcessorPaths>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<version>3.8.1</version>-->
+<!--				<configuration>-->
+<!--					<source>1.8</source> &lt;!&ndash; depending on your project &ndash;&gt;-->
+<!--					<target>1.8</target> &lt;!&ndash; depending on your project &ndash;&gt;-->
+<!--					<annotationProcessorPaths>-->
+<!--						<path>-->
+<!--							<groupId>org.mapstruct</groupId>-->
+<!--							<artifactId>mapstruct-processor</artifactId>-->
+<!--							<version>${org.mapstruct.version}</version>-->
+<!--						</path>-->
+
+<!--						<path>-->
+<!--							<groupId>org.projectlombok</groupId>-->
+<!--							<artifactId>lombok</artifactId>-->
+<!--							<version>${lombok.version}</version>-->
+<!--						</path>-->
+
+<!--&lt;!&ndash;						<path>&ndash;&gt;-->
+<!--&lt;!&ndash;							<groupId>org.projectlombok</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;							<artifactId>lombok-mapstruct-binding</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;							&lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;							<version>${lombok-mapstruct-binding.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;						</path>&ndash;&gt;-->
+<!--						&lt;!&ndash; other annotation processors &ndash;&gt;-->
+<!--					</annotationProcessorPaths>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+		</plugins>
+	</build>
+
+</project>
