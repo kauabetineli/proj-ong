@@ -1,6 +1,5 @@
 package com.github.onganiza.controller.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.github.onganiza.entity.Setor;
 import com.github.onganiza.entity.TipoUsuario;
 import jakarta.validation.constraints.NotBlank;
@@ -33,7 +32,6 @@ public record UsuarioCadastroDTO (
         @NotNull(message = "Tipo de usuário é obrigatório")
         TipoUsuario tipoUsuario,
 
-    //    @JsonFormat(pattern = "dd/MM/yyyy")
         @NotNull
         @Past(message = "Não pode ser data futura")
         LocalDate dataNascimento,

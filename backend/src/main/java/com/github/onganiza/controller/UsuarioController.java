@@ -3,7 +3,6 @@ package com.github.onganiza.controller;
 import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
 import com.github.onganiza.controller.dto.UsuarioDTO;
 import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
-import com.github.onganiza.controller.mapper.UsuarioMapper;
 import com.github.onganiza.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

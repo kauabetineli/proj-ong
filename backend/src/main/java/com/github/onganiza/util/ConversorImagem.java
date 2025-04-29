@@ -21,7 +21,7 @@ public class ConversorImagem {
 
         String tipoArquivo = arquivo.getContentType();
 
-        if (!tipoArquivo.startsWith("image")) {
+        if (tipoArquivo != null && !tipoArquivo.startsWith("image")) {
             throw new InvalidNameException("O arquivo não é uma imagem válida");
         }
 
