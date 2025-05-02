@@ -21,12 +21,12 @@ public class UsuarioService {
     private final UsuarioRepository repository;
     private final UsuarioMapper mapper;
 
-    public UsuarioDetalhesDTO save(UsuarioCadastroDTO usuarioCadastroDTO) {
+    public UsuarioDetalhesDTO salvarUsuario(UsuarioCadastroDTO usuarioCadastroDTO) {
 //        return repository.save(usuario);
         return mapper.toDetalhesDto(repository.save(mapper.toEntity(usuarioCadastroDTO)));
     }
 
-    public List<UsuarioDTO> findAll() {
+    public List<UsuarioDTO> buscarTodos() {
         return repository.findAll()
                 .stream()
                 .map(mapper::toDto)
@@ -63,19 +63,29 @@ public class UsuarioService {
                 .toList();
     }
 
-    public Optional<UsuarioDetalhesDTO> findById(Integer id) {
+    public Optional<UsuarioDetalhesDTO> buscarPorId(Integer id) {
         return repository.findById(id)
                 .map(mapper::toDetalhesDto);
     }
 
-    public boolean delete(Integer id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-            return true;
-        }
-        return false;
+    public boolean deletarUsuario(Integer id) {
+        if(!usuarioExiste(id)) return false;
+
+        repository.deleteById(id);
+
+        return true;
     }
 
+    public boolean atualizarUsuario(UsuarioDetalhesDTO usuarioDetalhesDTO) {
+        if(!usuarioExiste(usuarioDetalhesDTO.id())) return false;
 
+        repository.save(mapper.toEntity(usuarioDetalhesDTO));
+
+        return true;
+    }
+
+    private boolean usuarioExiste(Integer id) {
+        return repository.existsById(id);
+    }
 
 }

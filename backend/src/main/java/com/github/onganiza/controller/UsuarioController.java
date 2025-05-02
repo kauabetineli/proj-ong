@@ -22,23 +22,23 @@ public class UsuarioController {
     private final UsuarioService service;
 
     @PostMapping
-    public ResponseEntity<UsuarioDetalhesDTO> save(
+    public ResponseEntity<UsuarioDetalhesDTO> salvarUsuario(
             @ModelAttribute @Valid UsuarioCadastroDTO usuarioCadastroDTO // modelattribute devido a conter arquivo ao passar como parametro
             ) {
 
-        return ResponseEntity.ok(service.save(usuarioCadastroDTO));
+        return ResponseEntity.ok(service.salvarUsuario(usuarioCadastroDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<UsuarioDTO>> buscarTodos() {
+        return ResponseEntity.ok(service.buscarTodos());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<UsuarioDetalhesDTO>> findById(
+    public ResponseEntity<Optional<UsuarioDetalhesDTO>> buscarPorId(
             @PathVariable Integer id
     ) {
-        return ResponseEntity.ok(service.findById(id));
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @GetMapping("/busca")
@@ -52,15 +52,29 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(
+    public ResponseEntity<String> deletarUsuario(
             @PathVariable Integer id
     ) {
-        boolean deleted = service.delete(id);
-        if (deleted) {
+        boolean usuarioDeletado = service.deletarUsuario(id);
+        if (usuarioDeletado) {
             return ResponseEntity.ok("Usuário deletado com sucesso");
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> atualizarUsuario(
+            @ModelAttribute @Valid UsuarioDetalhesDTO usuarioDetalhesDTO
+    ) {
+
+        boolean usuarioAtualizado = service.atualizarUsuario(usuarioDetalhesDTO);
+
+        if(usuarioAtualizado) {
+            return ResponseEntity.ok("Usuário atualizado com sucesso");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
 }
