@@ -1,6 +1,7 @@
 import './Profile.css';
 import React, { useState } from 'react';
 import ProfilePic from '../../assets/1111.png';
+import Button from '../button/Button.jsx';
 
     function Profile({onClose}) {
         const [userInfo] = useState(
@@ -38,7 +39,7 @@ import ProfilePic from '../../assets/1111.png';
                         <label>CPF<input type="text" value={userInfo.cpf} readOnly /></label> 
                         <label>Setor<input type="text" value={userInfo.sector} readOnly /></label>
                         <label>Endereço<input type="text" value={userInfo.address} readOnly /></label>
-                        <button onClick={handlePasswordChange} className="changePassword-button">Alterar Senha</button>
+                        <Button text='Alterar Senha' onClick={handlePasswordChange} className="changePassword-button"></Button>
                     </div>
                 </div>
             </div>

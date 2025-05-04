@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './components/pages/Login/LoginPage.jsx';
 import Dashboard from './components/pages/Dashboard/Dashboard.jsx';
-
+import ManageVoluntary from './components/pages/ManageVoluntary/ManageVoluntary.jsx';
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
   
@@ -22,6 +22,16 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+
+        <Route 
+          path="/voluntarios" 
+          element={
+            <ProtectedRoute>
+              <ManageVoluntary />
             </ProtectedRoute>
           } 
         />
