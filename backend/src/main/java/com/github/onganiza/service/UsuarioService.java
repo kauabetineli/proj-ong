@@ -84,6 +84,16 @@ public class UsuarioService {
         return true;
     }
 
+    public UsuarioDTO autenticar(String cpf, String senha) {
+        Usuario usuario = repository.findByCpf(cpf);
+
+        if(usuario == null) return null;
+
+        if(!usuario.getSenha().equals(senha)) return null;
+
+        return mapper.toDto(usuario);
+    }
+
     private boolean usuarioExiste(Integer id) {
         return repository.existsById(id);
     }
