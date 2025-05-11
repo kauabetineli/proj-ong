@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d13d4123-709f-4218-af24-3eadb57cd09c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Dashboard/Dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Dashboard/Dashboard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login/LoginPage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login/LoginPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/ManageVoluntary/ManageVoluntary.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/ManageVoluntary/ManageVoluntary.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,11 +61,11 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.Application.executor": "Run",
     "Spring Boot.OnganizaApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "add-frontend",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kauab/Documents/personal/PROJETO/onganiza",
+    "last_opened_file_path": "C:/Minhas Coisas/Faculdade/5 Semestre/Engenharia de Software/proj-ong",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,14 +95,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

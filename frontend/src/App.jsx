@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './components/pages/Login/LoginPage.jsx';
-import Dashboard from './components/pages/Dashboard/Dashboard.jsx';
-import ManageVoluntary from './components/pages/ManageVoluntary/ManageVoluntary.jsx';
+import LoginPage from './pages/Login/LoginPage.jsx';
+import Dashboard from './pages/Dashboard/Dashboard.jsx';
+import ManageVoluntary from './pages/ManageVoluntary/ManageVoluntary.jsx';
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
   
@@ -14,7 +14,6 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
-    <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route 
@@ -37,7 +36,6 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </Router>
   );
 }
 

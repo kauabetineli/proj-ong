@@ -1,10 +1,12 @@
 import { Link, Navigate } from 'react-router-dom';
 import './Navbar.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../AuthContext.jsx';
 
 
-function Navbar({ handleLogout, handleProfileClick }) {
+function Navbar() {
   const navigate = useNavigate();
+  const { logout, openProfile, user } = useAuth();
   return (
         <header className="top-navbar">
         <div className="nav-left">
@@ -16,7 +18,9 @@ function Navbar({ handleLogout, handleProfileClick }) {
               <a href="#">DOAÇÕES</a>
               <a href="#">DOADORES</a>
               <a href="#">ESTOQUE</a>
+            {user?.tipoUsuario === 'ADMINISTRADOR' && (
               <Link to="/voluntarios">VOLUNTÁRIOS</Link>
+            )}
               <a href="#">PRODUTOS</a>
             </div>
           </div>
@@ -30,8 +34,8 @@ function Navbar({ handleLogout, handleProfileClick }) {
         </div>
         
         <div className="nav-right">
-          <div className="nav-item" onClick={handleProfileClick}>MEU PERFIL</div>
-          <div className="nav-item logout" onClick={handleLogout}>SAIR</div>
+          <div className="nav-item" onClick={openProfile}>MEU PERFIL</div>
+          <div className="nav-item logout" onClick={logout}>SAIR</div>
         </div>
       </header>
   );

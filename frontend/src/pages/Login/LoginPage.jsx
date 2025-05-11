@@ -1,37 +1,43 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
-import LoginImage from '../../../assets/login_team.svg';
+import LoginImage from '../../assets/login_team.svg';
+import {useAuth} from '../../AuthContext.jsx';
 
 const LoginPage = () => {
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const {login} = useAuth();
 
-  // Mock de dados de usuário para autenticação
-  const mockUsers = [
-    { cpf: '11111111111', senha: '111111' },
-    { cpf: '22222222222', senha: '222222' }
-  ];
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    
-    // Validação simples (DEPOIS ADCIONAR A API)
-    if (!cpf.trim() || !senha.trim()) {
-      setError('Por favor, preencha todos os campos.');
-      return;
-    }
-    const user = mockUsers.find(user => user.cpf === cpf && user.senha === senha);
-    
-    if (user) {
-      localStorage.setItem('isAuthenticated', 'true');
+  if (!cpf.trim() || !senha.trim()) {
+    setError('Por favor, preencha todos os campos.');
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:8080/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cpf, senha })
+    });
+
+    if (response.ok) {
+      const userData = await response.json();
+      login(userData);
       navigate('/dashboard');
     } else {
       setError('CPF ou senha inválidos.');
     }
-  };
+  } catch (err) {
+    console.error(err);
+    setError('Erro ao conectar com o servidor.');
+  }
+};
 
   const handleCpfChange = (e) => {
     // Permite apenas números e limita a 11 dígitos
@@ -74,3 +80,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
