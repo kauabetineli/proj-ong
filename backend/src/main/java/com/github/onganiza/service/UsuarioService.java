@@ -1,5 +1,6 @@
 package com.github.onganiza.service;
 
+import com.github.onganiza.controller.dto.UsuarioAtualizaDTO;
 import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
 import com.github.onganiza.controller.dto.UsuarioDTO;
 import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
@@ -76,10 +77,10 @@ public class UsuarioService {
         return true;
     }
 
-    public boolean atualizarUsuario(UsuarioDetalhesDTO usuarioDetalhesDTO) {
-        if(!usuarioExiste(usuarioDetalhesDTO.id())) return false;
+    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO) {
+        if(!usuarioExiste(usuarioAtualizaDTO.id())) return false;
 
-        repository.save(mapper.toEntity(usuarioDetalhesDTO));
+        repository.save(mapper.toEntity(usuarioAtualizaDTO));
 
         return true;
     }

@@ -1,5 +1,6 @@
 package com.github.onganiza.controller;
 
+import com.github.onganiza.controller.dto.UsuarioAtualizaDTO;
 import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
 import com.github.onganiza.controller.dto.UsuarioDTO;
 import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:63343"})
+@CrossOrigin("*")
 public class UsuarioController {
 
     private final UsuarioService service;
@@ -63,12 +64,12 @@ public class UsuarioController {
         }
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping()
     public ResponseEntity<String> atualizarUsuario(
-            @ModelAttribute @Valid UsuarioDetalhesDTO usuarioDetalhesDTO
+            @ModelAttribute @Valid UsuarioAtualizaDTO usuarioAtualizaDTO
     ) {
 
-        boolean usuarioAtualizado = service.atualizarUsuario(usuarioDetalhesDTO);
+        boolean usuarioAtualizado = service.atualizarUsuario(usuarioAtualizaDTO);
 
         if(usuarioAtualizado) {
             return ResponseEntity.ok("Usuário atualizado com sucesso");

@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ONGaniza
     username: postgres
-    password: postgres
+    password: 1234
     driver-class-name: org.postgresql.Driver
     hikari:
       auto-commit: false # resolve o problema de auto-commit na funcao de filtrarUsuarios(chave, valor)
