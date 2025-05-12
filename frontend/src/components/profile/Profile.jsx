@@ -15,13 +15,16 @@ function Profile({ volunteer, onClose }) {
         }
     }
 
+    console.log('Volunteer:', volunteer);
+
     return (
         <div className="profile-container">
             <button className="close-button" onClick={onClose}>X</button>
             <h2>Perfil</h2>
             <div className="profile-card">
                 <div className="profile-picture">
-                    <img src={volunteer.foto_perfil ? volunteer.foto_perfil : ProfilePic} alt="Foto de Perfil" />
+                    <img src={volunteer.fotoPerfilBase64 ? `data:image/png;base64,${volunteer.fotoPerfilBase64}`
+                        : (volunteer.foto_perfil ? volunteer.foto_perfil : ProfilePic)} alt="Foto de Perfil"/>
                 </div>
                 <div className="profile-info">
                     <label>Nome<input type="text" value={volunteer.nome || ''} readOnly /></label>
