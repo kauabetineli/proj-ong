@@ -1,4 +1,4 @@
-package com.github.onganiza.controller.dto;
+package com.github.onganiza.controller.dto.beneficiario;
 
 import com.github.onganiza.entity.Escolaridade;
 

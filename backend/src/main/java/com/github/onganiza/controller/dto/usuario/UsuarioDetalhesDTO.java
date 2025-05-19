@@ -1,4 +1,4 @@
-package com.github.onganiza.controller.dto;
+package com.github.onganiza.controller.dto.usuario;
 
 import com.github.onganiza.entity.Setor;
 import com.github.onganiza.entity.TipoUsuario;
@@ -7,11 +7,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
-public record UsuarioAtualizaDTO(
+public record UsuarioDetalhesDTO(
 
         Integer id,
 
@@ -22,8 +21,6 @@ public record UsuarioAtualizaDTO(
         @NotBlank(message = "CPF é obrigatório")
         @CPF(message = "CPF em formato incorreto")
         String cpf,
-
-        String senha,
 
         @NotNull(message = "Endereço é obrigatório")
         String endereco,
@@ -38,7 +35,7 @@ public record UsuarioAtualizaDTO(
         @Past(message = "Não pode ser data futura")
         LocalDate dataNascimento,
 
-        MultipartFile fotoPerfil
+        String fotoPerfilBase64
 
-){
+    ){
 }

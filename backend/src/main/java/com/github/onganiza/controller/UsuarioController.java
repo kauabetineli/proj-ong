@@ -1,9 +1,9 @@
 package com.github.onganiza.controller;
 
-import com.github.onganiza.controller.dto.UsuarioAtualizaDTO;
-import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
-import com.github.onganiza.controller.dto.UsuarioDTO;
-import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioAtualizaDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioCadastroDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDetalhesDTO;
 import com.github.onganiza.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

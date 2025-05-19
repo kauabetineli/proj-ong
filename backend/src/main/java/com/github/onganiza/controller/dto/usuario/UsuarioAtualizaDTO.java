@@ -1,4 +1,4 @@
-package com.github.onganiza.controller.dto;
+package com.github.onganiza.controller.dto.usuario;
 
 import com.github.onganiza.entity.Setor;
 import com.github.onganiza.entity.TipoUsuario;
@@ -11,7 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
-public record UsuarioCadastroDTO (
+public record UsuarioAtualizaDTO(
+
+        Integer id,
+
         @NotNull(message = "Nome não deve ser nulo")
         @Size(min = 2, max = 100, message = "Nome deve ter entre 2 e 100 caracteres")
         String nome,
@@ -20,7 +23,6 @@ public record UsuarioCadastroDTO (
         @CPF(message = "CPF em formato incorreto")
         String cpf,
 
-        @NotBlank(message = "Senha é obrigatória")
         String senha,
 
         @NotNull(message = "Endereço é obrigatório")
@@ -37,6 +39,6 @@ public record UsuarioCadastroDTO (
         LocalDate dataNascimento,
 
         MultipartFile fotoPerfil
-    ) {
 
+){
 }

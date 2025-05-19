@@ -1,7 +1,7 @@
 package com.github.onganiza.controller;
 
 import com.github.onganiza.controller.dto.LoginDTO;
-import com.github.onganiza.controller.dto.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
 import com.github.onganiza.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

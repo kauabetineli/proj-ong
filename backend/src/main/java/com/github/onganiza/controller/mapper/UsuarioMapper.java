@@ -1,9 +1,9 @@
 package com.github.onganiza.controller.mapper;
 
-import com.github.onganiza.controller.dto.UsuarioAtualizaDTO;
-import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
-import com.github.onganiza.controller.dto.UsuarioDTO;
-import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioAtualizaDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioCadastroDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDetalhesDTO;
 import com.github.onganiza.entity.Usuario;
 import com.github.onganiza.util.ConversorImagem;
 import org.mapstruct.Mapper;
