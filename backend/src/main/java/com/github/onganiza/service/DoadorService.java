@@ -32,7 +32,8 @@ public class DoadorService {
 
     public List<DoadorListagemDTO> listarTodos() {
         List<Doador> lista = repository.findAll();
-        return lista.stream()
+        return lista
+                .stream()
                 .map(mapper::toListagemDto)
                 .toList();
     }
