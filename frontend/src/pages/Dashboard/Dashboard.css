@@ -1,0 +1,33 @@
+/* Dashboard.css - Com Dropdowns Melhorados */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-image {
+  max-width: 100%;
+  text-align: center;
+}
+
+.welcome-image img {
+  max-width: 400px;
+  height: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+}
