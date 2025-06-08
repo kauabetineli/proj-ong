@@ -2,6 +2,7 @@ package com.github.onganiza.controller;
 
 import com.github.onganiza.controller.dto.LoginDTO;
 import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDetalhesDTO;
 import com.github.onganiza.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +23,16 @@ public class AuthController {
     private final UsuarioService service;
 
     @PostMapping("/login")
-    public ResponseEntity<UsuarioDTO> login(
+    public ResponseEntity<UsuarioDetalhesDTO> login(
             @RequestBody LoginDTO login
     ){
-        UsuarioDTO usuario = service.autenticar(login.cpf(), login.senha());
-        if(usuario == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(usuario);
+        try{
+            UsuarioDetalhesDTO usuario = service.autenticar(login.cpf(), login.senha());
+            if(usuario == null) return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.notFound().build();
+        }
     }
 }

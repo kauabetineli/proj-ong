@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,9 +16,12 @@ public class ProdutoService {
 
     private final ProdutoRepository repository;
     private final ProdutoMapper mapper;
+    private final EstoqueService estoqueService;
 
     public ProdutoDTO salvar(ProdutoCadastroDTO produtoCadastroDTO) {
-        return mapper.toDto(repository.save(mapper.toEntity(produtoCadastroDTO)));
+        Produto produtoSalvo = repository.save(mapper.toEntity(produtoCadastroDTO));
+        estoqueService.criarEstoque(produtoSalvo);
+        return mapper.toDto(produtoSalvo);
     }
 
     public List<ProdutoDTO> listarTodos(){
