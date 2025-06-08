@@ -19,11 +19,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
-<<<<<<< HEAD
-@CrossOrigin(origins = "*")
-=======
 @CrossOrigin("*")
->>>>>>> upstream/main
 public class UsuarioController {
 
     private final UsuarioService service;
