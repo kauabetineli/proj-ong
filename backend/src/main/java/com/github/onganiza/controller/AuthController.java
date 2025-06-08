@@ -1,20 +1,25 @@
 package com.github.onganiza.controller;
 
 import com.github.onganiza.controller.dto.LoginDTO;
-import com.github.onganiza.controller.dto.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
 import com.github.onganiza.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+import org.springframework.web.bind.annotation.*;
+>>>>>>> upstream/main
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthController {
 
     private final UsuarioService service;

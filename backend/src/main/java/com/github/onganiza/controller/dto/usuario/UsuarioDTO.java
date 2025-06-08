@@ -1,4 +1,4 @@
-package com.github.onganiza.controller.dto;
+package com.github.onganiza.controller.dto.usuario;
 
 import com.github.onganiza.entity.Setor;
 import com.github.onganiza.entity.TipoUsuario;

@@ -1,8 +1,9 @@
 package com.github.onganiza.controller;
 
-import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
-import com.github.onganiza.controller.dto.UsuarioDTO;
-import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioAtualizaDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioCadastroDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDetalhesDTO;
 import com.github.onganiza.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
+<<<<<<< HEAD
 @CrossOrigin(origins = "*")
+=======
+@CrossOrigin("*")
+>>>>>>> upstream/main
 public class UsuarioController {
 
     private final UsuarioService service;
@@ -65,12 +70,12 @@ public class UsuarioController {
         }
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping()
     public ResponseEntity<String> atualizarUsuario(
-            @ModelAttribute @Valid UsuarioDetalhesDTO usuarioDetalhesDTO
+            @ModelAttribute @Valid UsuarioAtualizaDTO usuarioAtualizaDTO
     ) {
 
-        boolean usuarioAtualizado = service.atualizarUsuario(usuarioDetalhesDTO);
+        boolean usuarioAtualizado = service.atualizarUsuario(usuarioAtualizaDTO);
 
         if(usuarioAtualizado) {
             return ResponseEntity.ok("Usuário atualizado com sucesso");

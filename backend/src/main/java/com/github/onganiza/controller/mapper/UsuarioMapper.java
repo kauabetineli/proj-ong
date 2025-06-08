@@ -1,8 +1,9 @@
 package com.github.onganiza.controller.mapper;
 
-import com.github.onganiza.controller.dto.UsuarioCadastroDTO;
-import com.github.onganiza.controller.dto.UsuarioDTO;
-import com.github.onganiza.controller.dto.UsuarioDetalhesDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioAtualizaDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioCadastroDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDTO;
+import com.github.onganiza.controller.dto.usuario.UsuarioDetalhesDTO;
 import com.github.onganiza.entity.Usuario;
 import com.github.onganiza.util.ConversorImagem;
 import org.mapstruct.Mapper;
@@ -20,6 +21,17 @@ public interface UsuarioMapper {
     @Mapping(source = "dataNascimento", target = "dataNascimento")
     @Mapping(source = "fotoPerfil", target = "fotoPerfil", qualifiedByName = "converterImagemParaByte")
     Usuario toEntity(UsuarioCadastroDTO usuarioCadastroDTO);
+
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "nome", target = "nome")
+    @Mapping(source = "cpf", target = "cpf")
+    @Mapping(source = "senha", target = "senha")
+    @Mapping(source = "endereco", target = "endereco")
+    @Mapping(source = "setor", target = "setor")
+    @Mapping(source = "tipoUsuario", target = "tipoUsuario")
+    @Mapping(source = "dataNascimento", target = "dataNascimento")
+    @Mapping(source = "fotoPerfil", target = "fotoPerfil", qualifiedByName = "converterImagemParaByte")
+    Usuario toEntity(UsuarioAtualizaDTO usuarioAtualizaDTO);
 
     @Mapping(source = "fotoPerfil", target = "fotoPerfilBase64", qualifiedByName = "converterByteParaBase64")
     UsuarioDetalhesDTO toDetalhesDto(Usuario usuario);

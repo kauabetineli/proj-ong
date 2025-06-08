@@ -1,7 +1,7 @@
 package com.github.onganiza.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,14 +11,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 @Entity
-@Getter
-@Setter
-@ToString
 @EntityListeners(AuditingEntityListener.class)
-public class Usuario {
+public class Beneficiario {
 
     @Column
     @Id
@@ -29,29 +24,30 @@ public class Usuario {
     private String nome;
 
     @Column
-    @CPF
-    private String cpf;
+    private String nomePai;
 
     @Column
-    private String senha;
+    private String nomeMae;
+
+    @Column
+    @CPF
+    private String cpf;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @Column
-    private String endereco;
+    @Enumerated(EnumType.STRING)
+    private Escolaridade escolaridade;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    private Setor setor;
+    private String intolerancia;
+
+    @Column
+    private String observacao;
 
     @Lob
     @Column(name = "foto_perfil")
     private byte[] fotoPerfil;
-
-    @Column(name = "tipo_usuario")
-    @Enumerated(EnumType.STRING)
-    private TipoUsuario tipoUsuario;
 
     @CreatedDate // coloca a data hora atual no banco
     @Column(name = "data_cadastro")
