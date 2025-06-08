@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
@@ -38,10 +37,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<UsuarioDetalhesDTO>> buscarPorId(
-            @PathVariable Integer id
-    ) {
-        return ResponseEntity.ok(service.buscarPorId(id));
+    public ResponseEntity<UsuarioDetalhesDTO> buscarPorId(@PathVariable Integer id) {
+        return service.buscarPorId(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/busca")
