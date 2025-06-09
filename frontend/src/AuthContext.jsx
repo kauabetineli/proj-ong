@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
   };
 
   const openProfile = () => {
-      console.log('Abrindo perfil');
+      //console.log('Abrindo perfil');
     setProfileVisible(true);
   };
 
