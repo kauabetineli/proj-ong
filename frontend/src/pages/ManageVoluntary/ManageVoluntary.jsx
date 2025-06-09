@@ -10,7 +10,7 @@ import RegisterVolunteer from '../../components/RegisterVolunteer/RegisterVolunt
 function ManageVoluntary() {
   const [searchKey, setSearchKey] = useState('id');
   const [searchValue, setSearchValue] = useState('');
-  const { profileVisible, closeProfile, user } = useAuth();
+  const {profileVisible, closeProfile, user} = useAuth();
   const [volunteers, setVolunteers] = useState([]);
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
@@ -101,7 +101,7 @@ const handleView = (id) => {
       )}
 
       {profileVisible && (
-        <Profile volunteer={user} onClose={closeProfile} />
+        <Profile volunteer={user} onClose={closeProfile}/>
       )}
     </div>
   </div>

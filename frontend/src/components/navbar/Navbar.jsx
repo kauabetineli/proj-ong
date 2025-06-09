@@ -21,7 +21,6 @@ function Navbar() {
             {user?.tipoUsuario === 'ADMINISTRADOR' && (
               <Link to="/voluntarios">VOLUNTÁRIOS</Link>
             )}
-              <a href="#">PRODUTOS</a>
             </div>
           </div>
           

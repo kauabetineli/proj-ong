@@ -12,6 +12,17 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+const ProtectedRouteAdmin = ({ children }) => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const usuario = JSON.parse(localStorage.getItem('user'));
+
+  if (!isAuthenticated || usuario.tipoUsuario !== 'ADMINISTRADOR') {
+    return <Navigate to="/dashboard" />;
+  }
+  
+  return children;
+};
+
 function App() {
   return (
       <Routes>
@@ -29,9 +40,9 @@ function App() {
         <Route 
           path="/voluntarios" 
           element={
-            <ProtectedRoute>
+            <ProtectedRouteAdmin>
               <ManageVoluntary />
-            </ProtectedRoute>
+            </ProtectedRouteAdmin>
           } 
         />
         <Route path="*" element={<Navigate to="/" />} />
