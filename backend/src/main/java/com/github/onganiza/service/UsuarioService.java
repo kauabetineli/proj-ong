@@ -79,7 +79,7 @@ public class UsuarioService {
 
 //    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO) {
 //        if(!usuarioExiste(usuarioAtualizaDTO.id())) return false;
-////        Optional<Usuario> usuarioAtt = repository.findById(usuarioAtualizaDTO.id());
+//        Optional<Usuario> usuarioAtt = repository.findById(usuarioAtualizaDTO.id());
 //
 //        Usuario usuario = mapper.toEntity(usuarioAtualizaDTO);
 //
