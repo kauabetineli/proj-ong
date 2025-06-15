@@ -2,11 +2,14 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ONGaniza
     username: postgres
-    password: postgres
+    password: 1234
     driver-class-name: org.postgresql.Driver
     hikari:
       auto-commit: false # resolve o problema de auto-commit na funcao de filtrarUsuarios(chave, valor)
-
+#  main:
+#    allow-circular-references: true
+#permite ciclos de classes
+##  spring.main.allow-circular-references to true
   jpa:
     hibernate:
       ddl-auto: update  # ou create, create-drop, validate, none
@@ -15,3 +18,5 @@ spring:
       hibernate:
         format_sql: true
     #database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+

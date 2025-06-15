@@ -6,6 +6,7 @@ import com.github.onganiza.controller.mapper.ProdutoMapper;
 import com.github.onganiza.entity.produto.Produto;
 import com.github.onganiza.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +17,13 @@ public class ProdutoService {
 
     private final ProdutoRepository repository;
     private final ProdutoMapper mapper;
-    private final EstoqueService estoqueService;
+//    private final EstoqueService estoqueService;
 
-    public ProdutoDTO salvar(ProdutoCadastroDTO produtoCadastroDTO) {
-        Produto produtoSalvo = repository.save(mapper.toEntity(produtoCadastroDTO));
-        estoqueService.criarEstoque(produtoSalvo);
-        return mapper.toDto(produtoSalvo);
-    }
+//    public ProdutoDTO salvar(ProdutoCadastroDTO produtoCadastroDTO) {
+//        Produto produtoSalvo = repository.save(mapper.toEntity(produtoCadastroDTO));
+//        estoqueService.criarEstoque(produtoSalvo);
+//        return mapper.toDto(produtoSalvo);
+//    }
 
     public List<ProdutoDTO> listarTodos(){
         return repository.findAll()

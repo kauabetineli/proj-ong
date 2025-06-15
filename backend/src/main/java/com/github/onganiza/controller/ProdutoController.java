@@ -2,6 +2,10 @@ package com.github.onganiza.controller;
 
 import com.github.onganiza.controller.dto.produto.ProdutoCadastroDTO;
 import com.github.onganiza.controller.dto.produto.ProdutoDTO;
+import com.github.onganiza.controller.mapper.ProdutoMapper;
+import com.github.onganiza.entity.produto.Produto;
+import com.github.onganiza.repository.ProdutoRepository;
+import com.github.onganiza.service.EstoqueService;
 import com.github.onganiza.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +20,9 @@ import java.util.List;
 public class ProdutoController {
 
     private final ProdutoService service;
+    private final ProdutoMapper mapper;
+    private final ProdutoRepository repository;
+    private final EstoqueService estoqueService;
 
     @GetMapping
     public ResponseEntity<List<ProdutoDTO>> listarTodos(){
@@ -30,7 +37,9 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<ProdutoDTO> salvar(@RequestBody ProdutoCadastroDTO produtoCadastroDTO){
         try {
-            return ResponseEntity.ok(service.salvar(produtoCadastroDTO));
+            Produto produtoSalvo = repository.save(mapper.toEntity(produtoCadastroDTO));
+            estoqueService.criarEstoque(produtoSalvo);
+            return ResponseEntity.ok(mapper.toDto(produtoSalvo));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
