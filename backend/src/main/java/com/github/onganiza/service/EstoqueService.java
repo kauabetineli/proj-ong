@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -24,10 +23,6 @@ public class EstoqueService {
         estoque.setProduto(produto);
         estoque.setQuantidade(0.0);
         repository.save(estoque);
-    }
-
-    public void atualizarEstoque(Integer idProduto, Double quantidade) {
-
     }
 
     public List<EstoqueProdutoDTO> listarEstoques() {
