@@ -25,11 +25,11 @@ public class Produto {
     @Enumerated(EnumType.STRING)
     private UnidadeMedida unidadeMedida;
 
-    @CreatedDate // coloca a data hora atual no banco
-    @Column(name = "data_cadastro")
-    private LocalDateTime dataCadastro;
-
-    @LastModifiedDate // sempre que fazer um update, atualiza a data de atualizacao de cadastro
-    @Column(name = "data_atualizacao")
-    private LocalDateTime dataAtualizacao;
+//    @CreatedDate // coloca a data hora atual no banco
+//    @Column(name = "data_cadastro")
+//    private LocalDateTime dataCadastro;
+//
+//    @LastModifiedDate // sempre que fazer um update, atualiza a data de atualizacao de cadastro
+//    @Column(name = "data_atualizacao")
+//    private LocalDateTime dataAtualizacao;
 }

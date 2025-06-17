@@ -39,8 +39,8 @@ public class DoacaoService {
                     .orElseThrow(() -> new RuntimeException("produto nao encontrado"));
 
             // Incrementa o estoque
-            Estoque estoque = estoqueRepository.findByProduto(produto)
-                    .orElse(new Estoque(produto, 0.0)); // cria se não existir
+            Estoque estoque = estoqueRepository.findByProduto(produto).orElseThrow(() -> new RuntimeException("estoque nao encontrado"));
+//                    .orElse(new Estoque(produto, 0.0)); // cria se não existir
             estoque.setQuantidade(estoque.getQuantidade() + itemDTO.quantidade());
             estoqueRepository.save(estoque);
 
@@ -65,19 +65,67 @@ public class DoacaoService {
         Doacao doacao = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Doação não encontrada"));
 
-        // Decrementa o estoque
+        // decrementa o estoque
         for (ItemDoacao item : doacao.getItens()) {
             Produto produto = item.getProduto();
             Estoque estoque = estoqueRepository.findByProduto(produto)
                     .orElseThrow(() -> new RuntimeException("Estoque do produto não encontrado"));
 
-            Double novaQuantidade = estoque.getQuantidade() - item.getQuantidade();
-            // evita negativo
-            estoque.setQuantidade(Math.max(novaQuantidade, 0));
+            double novaQuantidade = estoque.getQuantidade() - item.getQuantidade();
+//            evita negativo
+//            estoque.setQuantidade(Math.max(novaQuantidade, 0));
+            estoque.setQuantidade(novaQuantidade);
             estoqueRepository.save(estoque);
         }
 
         repository.delete(doacao);
     }
+
+    public Doacao atualizarDoacao(Integer id, DoacaoCadastroDTO dto) {
+
+        Doacao doacaoExistente = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Doação não existe"));
+
+        doacaoExistente.getItens().forEach(item -> {
+
+            Produto produto = item.getProduto();
+            Estoque estoque = estoqueRepository.findByProduto(produto)
+                    .orElseThrow(() -> new RuntimeException("Estoque do produto não foi encontrado"));
+            estoque.setQuantidade(estoque.getQuantidade() - item.getQuantidade());
+            estoqueRepository.save(estoque);
+
+        });
+
+        Doador doador = doadorRepository.findById(dto.doadorId())
+                .orElseThrow( () -> new RuntimeException("Doador não existe") );
+
+        Doacao novaDoacao = new Doacao();
+
+        List<ItemDoacao> novosItens = dto.itens()
+                .stream()
+                .map(itemDTO -> {
+                    Produto produto = produtoRepository.findById(itemDTO.produtoId())
+                            .orElseThrow( () -> new RuntimeException("Produto nao existe") );
+                    Estoque estoque = estoqueRepository.findByProduto(produto)
+                            .orElseThrow(() -> new RuntimeException("Estoque nao existe"));
+                    estoque.setQuantidade(estoque.getQuantidade() + itemDTO.quantidade());
+                    estoqueRepository.save(estoque);
+
+                    ItemDoacao item = new ItemDoacao();
+                    item.setProduto(produto);
+                    item.setQuantidade(itemDTO.quantidade());
+                    item.setDoacao(novaDoacao);
+                    return item;
+                }).toList();
+
+        novaDoacao.setId(doacaoExistente.getId());
+        novaDoacao.setDoador(doador);
+        novaDoacao.setData(doacaoExistente.getData());
+        novaDoacao.setItens(novosItens);
+        return repository.save(novaDoacao);
+
+
+    }
+
 }
 

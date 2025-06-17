@@ -61,8 +61,9 @@ public class ProdutoController {
     public ResponseEntity<String> deletar(@PathVariable Integer id){
         try {
             if(!service.produtoExiste(id)) return ResponseEntity.notFound().build();
+
             service.deletar(id);
-            return ResponseEntity.ok("Produto deletado com sucesso");
+            return ResponseEntity.ok("Produto deletado");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();

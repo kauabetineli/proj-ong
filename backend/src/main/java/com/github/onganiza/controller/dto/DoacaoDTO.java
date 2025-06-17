@@ -5,7 +5,9 @@ import java.util.List;
 
 public record DoacaoDTO (
         Integer id,
+        Long idDoador,
         String doador,
+        String documento,
         LocalDateTime data,
         List<ItemDoacaoDTO> itens
 ) {

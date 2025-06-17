@@ -28,7 +28,7 @@ public class Usuario {
     @Column
     private String nome;
 
-    @Column
+    @Column(unique = true)
     @CPF
     private String cpf;
 

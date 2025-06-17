@@ -42,4 +42,8 @@ public class EstoqueService {
         return lista;
     }
 
+    public void removerEstoque(Integer idEstoque) {
+        repository.deleteById(idEstoque);
+    }
+
 }

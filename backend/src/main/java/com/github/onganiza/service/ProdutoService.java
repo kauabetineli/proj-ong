@@ -4,6 +4,7 @@ import com.github.onganiza.controller.dto.produto.ProdutoCadastroDTO;
 import com.github.onganiza.controller.dto.produto.ProdutoDTO;
 import com.github.onganiza.controller.mapper.ProdutoMapper;
 import com.github.onganiza.entity.produto.Produto;
+import com.github.onganiza.repository.EstoqueRepository;
 import com.github.onganiza.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
@@ -17,6 +18,7 @@ public class ProdutoService {
 
     private final ProdutoRepository repository;
     private final ProdutoMapper mapper;
+    private final EstoqueRepository estoqueRepository;
 //    private final EstoqueService estoqueService;
 
 //    public ProdutoDTO salvar(ProdutoCadastroDTO produtoCadastroDTO) {
@@ -41,6 +43,7 @@ public class ProdutoService {
     }
 
     public void deletar(Integer id) {
+        estoqueRepository.deleteById(id);
         repository.deleteById(id);
     }
 

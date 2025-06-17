@@ -1,5 +1,6 @@
 package com.github.onganiza.entity.doacao;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.onganiza.entity.doador.Doador;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Doacao {
     private LocalDateTime data;
 
     @OneToMany(mappedBy = "doacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ItemDoacao> itens = new ArrayList<>();
 
 }

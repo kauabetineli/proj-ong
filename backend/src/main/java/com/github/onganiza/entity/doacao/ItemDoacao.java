@@ -1,5 +1,6 @@
 package com.github.onganiza.entity.doacao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.onganiza.entity.produto.Produto;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class ItemDoacao {
 
     @ManyToOne
     @JoinColumn(name = "doacao_id")
+    @JsonBackReference
     private Doacao doacao;
 
     @ManyToOne
