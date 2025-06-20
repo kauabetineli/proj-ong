@@ -24,6 +24,7 @@ public class UsuarioService {
 
     public UsuarioDetalhesDTO salvarUsuario(UsuarioCadastroDTO usuarioCadastroDTO) {
 //        return repository.save(usuario);
+
         return mapper.toDetalhesDto(repository.save(mapper.toEntity(usuarioCadastroDTO)));
     }
 
@@ -101,21 +102,40 @@ public class UsuarioService {
 //        return true;
 //    }
 
-    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO) {
-        if(!usuarioExiste(usuarioAtualizaDTO.id())) return false;
+//    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO) {
+//        if(!usuarioExiste(usuarioAtualizaDTO.id())) return false;
+//
+//        Usuario usuarioAtt = mapper.toEntity(usuarioAtualizaDTO);
+//
+//        if(usuarioAtualizaDTO.senha().isBlank()){
+//            String senhaAtual = Objects.requireNonNull(repository.findById(usuarioAtualizaDTO.id()).orElse(null)).getSenha();
+//            usuarioAtt.setSenha(senhaAtual);
+//        } else{
+//            usuarioAtt.setSenha(usuarioAtualizaDTO.senha());
+//        }
+//
+//        repository.save(usuarioAtt);
+//        return true;
+//
+//    }
 
-        Usuario usuarioAtt = mapper.toEntity(usuarioAtualizaDTO);
+    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO){
+        Optional<Usuario> usuarioOpcional = repository.findById(usuarioAtualizaDTO.id());
+        // caso não encontre o usuario, interrompe a atualização
+        if (usuarioOpcional.isEmpty()) return false;
 
-        if(usuarioAtualizaDTO.senha().isBlank()){
-            String senhaAtual = Objects.requireNonNull(repository.findById(usuarioAtualizaDTO.id()).orElse(null)).getSenha();
-            usuarioAtt.setSenha(senhaAtual);
-        } else{
-            usuarioAtt.setSenha(usuarioAtualizaDTO.senha());
+        Usuario usuario = mapper.toEntity(usuarioAtualizaDTO);
+
+        // caso não ser passado nenhuma senha, seta ao usuario a última senha salva
+        if(!(usuarioAtualizaDTO.senha() == null)){
+            if(usuarioAtualizaDTO.senha().isBlank()){
+                usuario.setSenha(usuarioOpcional.get().getSenha());
+            }
         }
 
-        repository.save(usuarioAtt);
-        return true;
+        repository.save(usuario);
 
+        return true;
     }
 
     public UsuarioDetalhesDTO autenticar(String cpf, String senha) {

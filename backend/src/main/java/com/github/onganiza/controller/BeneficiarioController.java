@@ -5,6 +5,7 @@ import com.github.onganiza.controller.dto.beneficiario.BeneficiarioCadastroDTO;
 import com.github.onganiza.controller.dto.beneficiario.BeneficiarioDTO;
 import com.github.onganiza.controller.dto.beneficiario.BeneficiarioDetalhesDTO;
 import com.github.onganiza.service.BeneficiarioService;
+import com.github.onganiza.util.VerificadorIdade;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import static com.github.onganiza.util.VerificadorIdade.ehMaiorDeIdade;
 
 @RestController
 @RequestMapping("/beneficiarios")
@@ -27,6 +30,9 @@ public class BeneficiarioController {
             @ModelAttribute @Valid BeneficiarioCadastroDTO beneficiarioCadastroDTO
     ) {
         try {
+
+            if(!ehMaiorDeIdade(beneficiarioCadastroDTO.dataNascimento())) throw new Exception();
+
             return ResponseEntity.ok(service.salvar(beneficiarioCadastroDTO));
 
         } catch (Exception e) {
@@ -80,6 +86,7 @@ public class BeneficiarioController {
             @ModelAttribute @Valid BeneficiarioAtualizaDTO beneficiarioAtualizaDTO
     ){
         try {
+            if(ehMaiorDeIdade(beneficiarioAtualizaDTO.dataNascimento())) throw new Exception();
           service.atualizar(beneficiarioAtualizaDTO);
           return ResponseEntity.ok("Beneficiario atualizado com sucesso");
         } catch (Exception e) {

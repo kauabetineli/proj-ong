@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
+import static com.github.onganiza.util.VerificadorIdade.ehMaiorDeIdade;
 
 
 @RestController
@@ -24,11 +25,19 @@ public class UsuarioController {
     private final UsuarioService service;
 
     @PostMapping
-    public ResponseEntity<UsuarioDetalhesDTO> salvarUsuario(
+    public ResponseEntity<?> salvarUsuario(
             @ModelAttribute @Valid UsuarioCadastroDTO usuarioCadastroDTO // modelattribute devido a conter arquivo ao passar como parametro
             ) {
+        try{
+            if (ehMaiorDeIdade(usuarioCadastroDTO.dataNascimento())) {
+                return ResponseEntity.ok(service.salvarUsuario(usuarioCadastroDTO));
+            }
+            return ResponseEntity.badRequest().body("Necessário ser maior de idade.");
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
 
-        return ResponseEntity.ok(service.salvarUsuario(usuarioCadastroDTO));
     }
 
     @GetMapping
@@ -69,14 +78,34 @@ public class UsuarioController {
     public ResponseEntity<String> atualizarUsuario(
             @ModelAttribute @Valid UsuarioAtualizaDTO usuarioAtualizaDTO
     ) {
+        try{
 
-        boolean usuarioAtualizado = service.atualizarUsuario(usuarioAtualizaDTO);
+            if (!ehMaiorDeIdade(usuarioAtualizaDTO.dataNascimento())) return ResponseEntity.badRequest().body("Necessário ser maior de idade.");
 
-        if(usuarioAtualizado) {
-            return ResponseEntity.ok("Usuário atualizado com sucesso");
-        } else {
-            return ResponseEntity.notFound().build();
+            boolean usuarioAtualizado = service.atualizarUsuario(usuarioAtualizaDTO);
+
+            if(usuarioAtualizado) {
+                return ResponseEntity.ok("Usuário atualizado com sucesso");
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
         }
 
     }
+
+//    public boolean ehMaiorDeIdade(LocalDate dataNascimentoUsuario){
+//        LocalDate dataAtual = LocalDate.now();
+//        Period periodo = Period.between(dataNascimentoUsuario, dataAtual);
+//        System.out.println(
+//                "Dias: " + periodo.getDays() + "\n" +
+//                "Meses: " + periodo.getMonths() + "\n" +
+//                "Anos: " + periodo.getYears());
+//        int idadeUsuario = periodo.getYears();
+//        System.out.println("Idade do usuario: " + idadeUsuario);
+//        return idadeUsuario >= 18;
+//    }
+
 }
