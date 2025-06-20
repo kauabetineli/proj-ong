@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.onganiza.util.VerificadorIdade.ehMaiorDeIdade;
+import static com.github.onganiza.util.VerificadorIdade.possuiMaioridade;
 
 
 @RestController
@@ -29,7 +29,7 @@ public class UsuarioController {
             @ModelAttribute @Valid UsuarioCadastroDTO usuarioCadastroDTO // modelattribute devido a conter arquivo ao passar como parametro
             ) {
         try{
-            if (ehMaiorDeIdade(usuarioCadastroDTO.dataNascimento())) {
+            if (possuiMaioridade(usuarioCadastroDTO.dataNascimento())) {
                 return ResponseEntity.ok(service.salvarUsuario(usuarioCadastroDTO));
             }
             return ResponseEntity.badRequest().body("Necessário ser maior de idade.");
@@ -80,7 +80,7 @@ public class UsuarioController {
     ) {
         try{
 
-            if (!ehMaiorDeIdade(usuarioAtualizaDTO.dataNascimento())) return ResponseEntity.badRequest().body("Necessário ser maior de idade.");
+            if (!possuiMaioridade(usuarioAtualizaDTO.dataNascimento())) return ResponseEntity.badRequest().body("Necessário ser maior de idade.");
 
             boolean usuarioAtualizado = service.atualizarUsuario(usuarioAtualizaDTO);
 

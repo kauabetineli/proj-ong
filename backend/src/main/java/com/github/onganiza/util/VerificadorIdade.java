@@ -5,9 +5,7 @@ import java.time.Period;
 
 public class VerificadorIdade {
 
-
-
-    public static boolean ehMaiorDeIdade(LocalDate dataNascimentoParametro){
+    public static boolean possuiMaioridade(LocalDate dataNascimentoParametro){
         LocalDate dataAtual = LocalDate.now();
         Period periodo = Period.between(dataNascimentoParametro, dataAtual);
         System.out.println(
