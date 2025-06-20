@@ -17,7 +17,8 @@ function Navbar() {
               <a href="#">BENEFICIÁRIOS</a>
               <a href="#">DOAÇÕES</a>
               <a href="#">DOADORES</a>
-              <a href="#">ESTOQUE</a>
+              <Link to="/produtos">PRODUTOS</Link>
+              <Link to="/estoque">ESTOQUE</Link>
             {user?.tipoUsuario === 'ADMINISTRADOR' && (
               <Link to="/voluntarios">VOLUNTÁRIOS</Link>
             )}

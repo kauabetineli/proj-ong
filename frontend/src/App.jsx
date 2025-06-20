@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/Login/LoginPage.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
-import ManageVoluntary from './pages/ManageVoluntary/ManageVoluntary.jsx';
+import ManageStock from './pages/manage/ManageStock/ManageStock.jsx';
+import ManageProducts from './pages/manage/ManageProducts/ManageProducts.jsx';
+import ManageVoluntary from './pages/manage/ManageVoluntary/ManageVoluntary.jsx';
+
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
   
@@ -36,6 +39,24 @@ function App() {
           } 
         />
         <Route path="*" element={<Navigate to="/" />} />
+
+        <Route 
+          path="/estoque" 
+          element={
+            <ProtectedRoute>
+              <ManageStock />
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route 
+          path="/produtos" 
+          element={
+            <ProtectedRoute>
+              <ManageProducts />
+            </ProtectedRoute>
+          } 
+        />
 
         <Route 
           path="/voluntarios" 
