@@ -17,6 +17,18 @@ public class VerificadorIdade {
         return idadeDoCadastrado >= 18;
     }
 
+    public static boolean possuiIdadeAte18AnosCompletos(LocalDate dataNascimentoParametro){
+        LocalDate dataAtual = LocalDate.now();
+        Period periodo = Period.between(dataNascimentoParametro, dataAtual);
+        System.out.println(
+                "Dias: " + periodo.getDays() + "\n" +
+                "Meses: " + periodo.getMonths() + "\n" +
+                "Anos: " + periodo.getYears());
+        int idadeDoCadastrado = periodo.getYears();
+        System.out.println("Idade do usuario: " + idadeDoCadastrado);
+        return idadeDoCadastrado < 19;
+    }
+
 
 
 }
