@@ -41,6 +41,7 @@ const handleView = (id) => {
     .then(res => res.json())
     .then(data => {
       setSelectedVolunteer(data.value ? data.value : data);
+      console.log('Voluntário selecionado:', data);
     })
     .catch(err => console.error('Erro ao buscar voluntário:', err));
 };

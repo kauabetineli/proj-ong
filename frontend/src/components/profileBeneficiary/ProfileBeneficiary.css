@@ -1,4 +1,4 @@
-.profile-voluntary-container {
+.profile-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -24,46 +24,24 @@
 }
 
 .close-button:hover {
-        color: #000;
+        color: #e74c3c;
     }
 
-.profile-voluntary-card {
+.profile-card {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.profile-voluntary-picture {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    width: 120px;
-    height: 120px;
-    text-align: center;
-    font-size: 12px;
-    color: #666;
-}
-
-.profile-voluntary-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    border-radius: 8px;
-    display: block;
-}
-
-.profile-voluntary-info {
+.profile-info {
     flex: 2;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.profile-voluntary-info label {
+.profile-info label {
     font-weight: bold;
     font-size: 14px;
     color: #333;
@@ -71,7 +49,7 @@
     text-align: left;
 }
 
-.profile-voluntary-info input {
+.profile-info input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -80,28 +58,52 @@
     color: #333;
 }
 
-.profile-voluntary-actions {
+.profile-info textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.profile-info select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    box-sizing: border-box;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.profile-actions {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
 .edit-btn {
-    background-color: #f1c40f;
+    background-color: #007bff;
     color: #fff;
 }
 
 .edit-btn:hover {
-    background-color: #f39c12;
+    background-color: #0056b3;
 }
 
 .save-btn {
-    background-color: #27ae60;
+    background-color: #007bff;
     color: #fff;
 }
 
 .save-btn:hover {
-    background-color: #219150;
+    background-color: #0056b3;
 }
 
 .delete-btn {
@@ -112,21 +114,3 @@
 .delete-btn:hover {
     background-color: #c0392b;
 }
-
-.changePassword-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.changePassword-button:hover {
-    background-color: #2980b9;
-}
-

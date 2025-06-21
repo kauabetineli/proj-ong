@@ -67,15 +67,18 @@ function Profile({ volunteer, onClose }) {
         }
     }
     return (
-        <div className="profile-container">
-            <button className="close-button" onClick={onClose}>X</button>
-            <h2>Perfil</h2>
-            <div className="profile-card">
-                <div className="profile-picture">
+        <div className="profile-voluntary-container">
+            <div className="profile-voluntary-header">
+                <h2>Perfil</h2>
+                <button className="close-button" onClick={onClose}>X</button>
+                </div>
+
+            <div className="profile-voluntary-card">
+                <div className="profile-voluntary-picture">
                     <img src={volunteer.fotoPerfilBase64 ? `data:image/png;base64,${volunteer.fotoPerfilBase64}`
                         : (volunteer.foto_perfil ? volunteer.foto_perfil : ProfilePic)} alt="Foto de Perfil" />
                 </div>
-                <div className="profile-info">
+                <div className="profile-voluntary-info">
                     <label> Nome <input type="text" name="nome" value={form.nome} onChange={handleChange} readOnly={!isEditing} /> </label>
                     <label> Data de Nascimento <input type="text" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} readOnly={!isEditing} /> </label>
                     <label> CPF <input type="text" name="cpf" value={volunteer.cpf} readOnly/> </label> 
@@ -85,7 +88,7 @@ function Profile({ volunteer, onClose }) {
                         <label> Nova Foto de Perfil <input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /> </label>
                         )}
                     {erro && <div className="erro">{erro}</div>}
-                    <div className="profile-actions">
+                    <div className="profile-voluntary-actions">
                         {!isEditing ? (
                             <Button text="Editar" onClick={handleEdit} className="edit-btn" />) : (
                             <Button text="Salvar Alterações" onClick={handleSave} className="save-btn" />
