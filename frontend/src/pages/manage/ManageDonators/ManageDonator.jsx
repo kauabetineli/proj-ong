@@ -36,12 +36,15 @@ function ManageDonator() {
     }
   };
 
-  const handleView = (id) => {
-    fetch(`http://localhost:8080/doadores/${id}`)
-      .then(res => res.json())
-      .then(data => setSelectedDonator(data.value ? data.value : data))
-      .catch(err => console.error('Erro ao buscar doador:', err));
-  };
+const handleView = (id) => {
+  fetch(`http://localhost:8080/doadores/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      setSelectedDonator(data.value ? data.value : data);
+      console.log('Doador selecionado:', data);
+    })
+    .catch(err => console.error('Erro ao buscar doador:', err));
+};
 
   const handleClearFilter = () => {
     setSearchValue('');
