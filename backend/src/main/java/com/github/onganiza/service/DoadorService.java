@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +37,14 @@ public class DoadorService {
                 .stream()
                 .map(mapper::toListagemDto)
                 .toList();
+    }
+
+    public DoadorListagemDTO detalharDoador(Integer id) {
+        Optional<Doador> doador = repository.findById(id);
+
+        if(doador.isEmpty()) return null;
+
+        return mapper.toListagemDto(doador.get());
+
     }
 }

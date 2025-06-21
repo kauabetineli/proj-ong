@@ -53,6 +53,18 @@ public class DoadorController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DoadorListagemDTO> detalharDoador(
+            @PathVariable(name = "id") Integer id
+    ) {
+        try {
+            return ResponseEntity.ok(service.detalharDoador(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
 
 
 }

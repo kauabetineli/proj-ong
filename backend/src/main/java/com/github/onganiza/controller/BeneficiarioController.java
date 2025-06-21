@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static com.github.onganiza.util.VerificadorIdade.possuiIdadeAte18AnosCompletos;
 import static com.github.onganiza.util.VerificadorIdade.possuiMaioridade;
 
 @RestController
@@ -30,7 +31,7 @@ public class BeneficiarioController {
     ) {
         try {
 
-            if(possuiMaioridade(beneficiarioCadastroDTO.dataNascimento())) throw new Exception();
+            if(!possuiIdadeAte18AnosCompletos(beneficiarioCadastroDTO.dataNascimento())) throw new Exception();
 
             return ResponseEntity.ok(service.salvar(beneficiarioCadastroDTO));
 
@@ -85,7 +86,7 @@ public class BeneficiarioController {
             @ModelAttribute @Valid BeneficiarioAtualizaDTO beneficiarioAtualizaDTO
     ){
         try {
-            if(possuiMaioridade(beneficiarioAtualizaDTO.dataNascimento())) throw new Exception();
+            if(!possuiIdadeAte18AnosCompletos(beneficiarioAtualizaDTO.dataNascimento())) throw new Exception();
           service.atualizar(beneficiarioAtualizaDTO);
           return ResponseEntity.ok("Beneficiario atualizado com sucesso");
         } catch (Exception e) {
