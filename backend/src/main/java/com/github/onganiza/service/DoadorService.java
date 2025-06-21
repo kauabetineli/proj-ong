@@ -45,6 +45,9 @@ public class DoadorService {
         if(doador.isEmpty()) return null;
 
         return mapper.toListagemDto(doador.get());
+    }
 
+    public void deletarDoador(Integer id){
+        repository.deleteById(id);
     }
 }

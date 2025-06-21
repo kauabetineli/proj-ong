@@ -65,6 +65,17 @@ public class DoadorController {
         }
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(
+            @PathVariable(name = "id") Integer id
+    ){
+        try {
+            service.deletarDoador(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
 }
