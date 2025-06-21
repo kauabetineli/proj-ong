@@ -1,7 +1,7 @@
 .manage-stocks-container {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    padding: 20px;
     min-height: 100vh;
     align-items: center;
     background-color: #f4f4f4;

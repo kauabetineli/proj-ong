@@ -16,7 +16,7 @@ function Navbar() {
             <div className="dropdown-content">
               <a href="/beneficiarios">BENEFICIÁRIOS</a>
               <a href="#">DOAÇÕES</a>
-              <a href="#">DOADORES</a>
+              <a href="/doadores">DOADORES</a>
               <Link to="/produtos">PRODUTOS</Link>
               <Link to="/estoque">ESTOQUE</Link>
             {user?.tipoUsuario === 'ADMINISTRADOR' && (

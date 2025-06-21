@@ -97,7 +97,7 @@ function ManageBeneficiary() {
 
         {profileVisible && (
         <Profile volunteer={user} onClose={closeProfile}/>
-      )}
+        )}
       </div>
     </div>
   );
