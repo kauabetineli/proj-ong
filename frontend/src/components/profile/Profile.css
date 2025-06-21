@@ -1,4 +1,4 @@
-.profile-container {
+.profile-voluntary-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -27,14 +27,14 @@
         color: #000;
     }
 
-.profile-card {
+.profile-voluntary-card {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.profile-picture {
+.profile-voluntary-picture {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -48,7 +48,7 @@
     color: #666;
 }
 
-.profile-picture img {
+.profile-voluntary-picture img {
     width: 100%;
     height: 100%;
     object-fit: fill;
@@ -56,14 +56,14 @@
     display: block;
 }
 
-.profile-info {
+.profile-voluntary-info {
     flex: 2;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.profile-info label {
+.profile-voluntary-info label {
     font-weight: bold;
     font-size: 14px;
     color: #333;
@@ -71,7 +71,7 @@
     text-align: left;
 }
 
-.profile-info input {
+.profile-voluntary-info input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -80,7 +80,7 @@
     color: #333;
 }
 
-.profile-actions {
+.profile-voluntary-actions {
     display: flex;
     gap: 10px;
     margin-top: 20px;
@@ -129,5 +129,4 @@
 .changePassword-button:hover {
     background-color: #2980b9;
 }
-
 

@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import ManageStock from './pages/manage/ManageStock/ManageStock.jsx';
 import ManageProducts from './pages/manage/ManageProducts/ManageProducts.jsx';
 import ManageVoluntary from './pages/manage/ManageVoluntary/ManageVoluntary.jsx';
+import ManageBeneficiary from './pages/manage/ManageBeneficiary/ManageBeneficiary.jsx';
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -58,6 +59,15 @@ function App() {
           } 
         />
 
+        <Route
+          path="/beneficiarios"
+          element={
+            <ProtectedRoute>
+              <ManageBeneficiary />
+            </ProtectedRoute>
+          }
+        />
+        
         <Route 
           path="/voluntarios" 
           element={
