@@ -126,11 +126,15 @@ public class UsuarioService {
 
         Usuario usuario = mapper.toEntity(usuarioAtualizaDTO);
 
+        System.out.println(usuarioAtualizaDTO.senha());
+
         // caso não ser passado nenhuma senha, seta ao usuario a última senha salva
         if(!(usuarioAtualizaDTO.senha() == null)){
             if(usuarioAtualizaDTO.senha().isBlank()){
                 usuario.setSenha(usuarioOpcional.get().getSenha());
             }
+        } else{
+            usuario.setSenha(usuarioOpcional.get().getSenha());
         }
 
         repository.save(usuario);
