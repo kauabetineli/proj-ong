@@ -100,4 +100,9 @@ public class SaidaItemService {
         return repository.findAll();
     }
 
+    public Optional<SaidaItem> detalharDoador(Integer id) {
+        Optional<SaidaItem> saida = repository.findById(id);
+        return saida;
+
+    }
 }

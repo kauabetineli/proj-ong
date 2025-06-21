@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/saidas")
@@ -32,6 +33,18 @@ public class SaidaItemController {
     public ResponseEntity<List<SaidaItem>> listarTodas(){
         try {
             return ResponseEntity.ok(service.listar());
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<SaidaItem>> detalharSaida(
+            @PathVariable(name = "id") Integer id
+    ){
+        try {
+            return ResponseEntity.ok(service.detalharDoador(id));
         } catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
