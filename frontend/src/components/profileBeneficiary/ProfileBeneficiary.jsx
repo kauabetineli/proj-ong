@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ProfileBeneficiary.css';
 import Button from '../button/Button.jsx';
+import { escolaridade } from '../../enums/escolaridade.jsx';
 
 function ProfileBeneficiary({ beneficiario, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -67,24 +68,31 @@ function ProfileBeneficiary({ beneficiario, onClose }) {
 
   return (
     <div className="profile-container">
-      <button className="close-button" onClick={onClose}>X</button>
-      <h2>Perfil do Beneficiário</h2>
+      <div className="profile-header">
+          <h2>Perfil do Beneficiário</h2>
+          <button className="close-button" onClick={onClose}>X</button>
+        </div> 
+
       <div className="profile-card">
-        <div className="profile-picture">
-          <img src={beneficiario.fotoPerfilBase64 ? `data:image/png;base64,${beneficiario.fotoPerfilBase64}` : undefined} alt="Foto de Perfil" />
-        </div>
+
         <div className="profile-info">
           <label>Nome <input type="text" name="nome" value={form.nome} onChange={handleChange} readOnly={!isEditing} /></label>
           <label>CPF <input type="text" name="cpf" value={form.cpf} readOnly /></label>
           <label>Data de Nascimento <input type="date" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} readOnly={!isEditing} /></label>
           <label>Nome do Pai <input type="text" name="nomePai" value={form.nomePai} onChange={handleChange} readOnly={!isEditing} /></label>
           <label>Nome da Mãe <input type="text" name="nomeMae" value={form.nomeMae} onChange={handleChange} readOnly={!isEditing} /></label>
-          <label>Escolaridade <input type="text" name="escolaridade" value={form.escolaridade} onChange={handleChange} readOnly={!isEditing} /></label>
+          <label>Escolaridade{isEditing ? ( 
+            <select name="escolaridade" value={form.escolaridade} onChange={handleChange} required>
+                <option value="">Selecione...</option>
+                {escolaridade.map((item) => (
+                  <option key={item} value={item}>
+                    {item.replaceAll("_", " ")}
+                  </option>))}
+              </select>) : (
+                <input type="text" name="escolaridade" value={form.escolaridade} readOnly/>)}
+              </label>
           <label>Intolerância <input type="text" name="intolerancia" value={form.intolerancia} onChange={handleChange} readOnly={!isEditing} /></label>
           <label>Observação <textarea name="observacao" value={form.observacao} onChange={handleChange} readOnly={!isEditing} /></label>
-          {isEditing && (
-            <label>Nova Foto de Perfil <input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /></label>
-          )}
           {erro && <div className="erro">{erro}</div>}
           <div className="profile-actions">
             {!isEditing ? (

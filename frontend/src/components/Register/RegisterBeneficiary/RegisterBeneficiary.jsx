@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './RegisterBeneficiary.css';
-import escolaridade from '../../../enums/escolaridade.jsx';
+import { escolaridade } from '../../../enums/escolaridade.jsx';
 
 function RegisterBeneficiary({ onClose, onSuccess }) {
   const [form, setForm] = useState({
@@ -64,14 +64,12 @@ function RegisterBeneficiary({ onClose, onSuccess }) {
             <label>Observação:<textarea name="observacao" value={form.observacao} onChange={handleChange} /></label>
           </div>
           <div className="form-row">
-            
             <label>
               Escolaridade: <select name="escolaridade" value={form.escolaridade} onChange={handleChange} required> <option value="">Selecione...</option>
                 {escolaridade.map((item) => (
                   <option key={item} value={item}> {item.replaceAll("_", " ")} </option>
                 ))} </select> 
                 </label>
-
             <label>Intolerância:<input type="text" name="intolerancia" value={form.intolerancia} onChange={handleChange} /></label>
           </div>
           {erro && <div className="erro">{erro}</div>}

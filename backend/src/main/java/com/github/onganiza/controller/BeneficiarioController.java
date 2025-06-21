@@ -30,7 +30,7 @@ public class BeneficiarioController {
     ) {
         try {
 
-            if(!possuiMaioridade(beneficiarioCadastroDTO.dataNascimento())) throw new Exception();
+            if(possuiMaioridade(beneficiarioCadastroDTO.dataNascimento())) throw new Exception();
 
             return ResponseEntity.ok(service.salvar(beneficiarioCadastroDTO));
 

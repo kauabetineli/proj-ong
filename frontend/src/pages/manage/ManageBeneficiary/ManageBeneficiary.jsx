@@ -5,6 +5,8 @@ import BeneficiaryTable from '../../../components/Tables/BeneficiaryTable/Benefi
 import ProfileBeneficiary from '../../../components/profileBeneficiary/ProfileBeneficiary.jsx';
 import RegisterBeneficiary from '../../../components/Register/RegisterBeneficiary/RegisterBeneficiary.jsx';
 import { useState, useEffect } from 'react';
+import Profile from '../../../components/profile/Profile.jsx';
+import { useAuth } from '../../../AuthContext.jsx';
 
 function ManageBeneficiary() {
   const [searchKey, setSearchKey] = useState('id');
@@ -12,6 +14,7 @@ function ManageBeneficiary() {
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [selectedBeneficiary, setSelectedBeneficiary] = useState(null);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
+  const { profileVisible, closeProfile, user } = useAuth();
 
   useEffect(() => {
     fetch('http://localhost:8080/beneficiarios')
@@ -91,6 +94,10 @@ function ManageBeneficiary() {
         {selectedBeneficiary && (
           <ProfileBeneficiary beneficiario={selectedBeneficiary} onClose={handleCloseBeneficiaryProfile} />
         )}
+
+        {profileVisible && (
+        <Profile volunteer={user} onClose={closeProfile}/>
+      )}
       </div>
     </div>
   );
