@@ -69,7 +69,7 @@ public class BeneficiarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletar(
-            @PathVariable Integer id
+            @PathVariable("id") Integer id
     ){
         try {
             if(!service.beneficiarioExiste(id)) return ResponseEntity.notFound().build();

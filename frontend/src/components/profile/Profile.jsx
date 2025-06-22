@@ -4,6 +4,17 @@ import ProfilePic from '../../assets/1111.png';
 import Button from '../button/Button.jsx';
 import { useAuth } from '../../AuthContext.jsx';
 
+const setores = [
+  'ADMINISTRATIVO',
+  'COORDENACAO',
+  'LOGISTICA',
+  'EVENTOS',
+  'COZINHA',
+  'APOIO',
+  'FINANCEIRO',
+  'PEDAGOGICO',
+];
+
 function Profile({ volunteer, onClose }) {
     const { user } = useAuth();
     const isUserLogged = user?.id === volunteer?.id;
@@ -82,7 +93,17 @@ function Profile({ volunteer, onClose }) {
                     <label> Nome <input type="text" name="nome" value={form.nome} onChange={handleChange} readOnly={!isEditing} /> </label>
                     <label> Data de Nascimento <input type="text" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} readOnly={!isEditing} /> </label>
                     <label> CPF <input type="text" name="cpf" value={volunteer.cpf} readOnly/> </label> 
-                    <label> Setor <input type="text" name="setor" value={form.setor} onChange={handleChange} readOnly={!isEditing} /> </label>
+                    {/* <label> Setor <input type="text" name="setor" value={form.setor} onChange={handleChange} readOnly={!isEditing} /> </label> */}
+                    <label>Setor{isEditing ? ( 
+                        <select name="setor" value={form.setor} onChange={handleChange} required>
+                            <option value="">Selecione...</option>
+                            {setores.map((item) => (
+                            <option key={item} value={item}>
+                                {item.replaceAll("_", " ")}
+                            </option>))}
+                        </select>) : (
+                            <input type="text" name="setor" value={form.setor} readOnly/>)}
+                        </label>
                     <label> Endereço <input type="text" name="endereco" value={form.endereco} onChange={handleChange} readOnly={!isEditing} /> </label>
                     {isEditing && ( 
                         <label> Nova Foto de Perfil <input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /> </label>

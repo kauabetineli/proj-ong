@@ -20,12 +20,12 @@ const DonatorTable = ({ data, onView }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((donator) => (
+        {data.map((donator) => ( 
           <tr key={donator.id}>
             <td>{donator.id}</td>
             <td>{getTipo(donator.documento)}</td>
-            <td>{donator.tipo === 'FISICO' ? donator.nome : donator.identificador}</td>
-            <td>{donator.tipo === 'FISICO' ? donator.cpf : donator.documento}</td>
+            <td>{getTipo(donator.documento) === 'FISICO' ? donator.nome : donator.identificador}</td>
+            <td>{getTipo(donator.documento) === 'FISICO' ? donator.cpf : donator.documento}</td>
             <td>
               <button className="view-button" onClick={() => onView(donator.id)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
