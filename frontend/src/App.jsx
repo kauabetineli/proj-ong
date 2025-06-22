@@ -6,6 +6,7 @@ import ManageProducts from './pages/manage/ManageProducts/ManageProducts.jsx';
 import ManageVoluntary from './pages/manage/ManageVoluntary/ManageVoluntary.jsx';
 import ManageBeneficiary from './pages/manage/ManageBeneficiary/ManageBeneficiary.jsx';
 import ManageDonator from './pages/manage/ManageDonators/ManageDonator.jsx';
+import ManageSaidaItens from './pages/manage/ManageSaidaItens/ManageSaidaItens.jsx';
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -40,7 +41,6 @@ function App() {
             </ProtectedRoute>
           } 
         />
-        <Route path="*" element={<Navigate to="/" />} />
 
         <Route 
           path="/estoque" 
@@ -83,6 +83,15 @@ function App() {
           element={
             <ProtectedRouteAdmin>
               <ManageVoluntary />
+            </ProtectedRouteAdmin>
+          } 
+        />
+
+        <Route 
+          path="/saida-itens" 
+          element={
+            <ProtectedRouteAdmin>
+              <ManageSaidaItens/>
             </ProtectedRouteAdmin>
           } 
         />

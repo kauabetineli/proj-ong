@@ -18,14 +18,32 @@ function DonatorProfile({ doador, onClose }) {
 
   async function handleSave() {
     try {
+      // Converte o nome das variaveis de doador para enviar para a requisicao
+      let donator;
+      if(doador.tipo === "FISICO") {
+        donator = {
+          id: form.id,
+          nome: form.identificador,
+          cpf: form.documento,
+        };
+      } else {
+        donator = {
+          id: form.id,
+          razaoSocial: form.identificador,
+          cnpj: form.documento,
+        };
+      }
+      // console.log("Doador:", donator);
+
       const url =
         doador.tipo === "FISICO"
-          ? "http://localhost:8080/doadores/fisico"
-          : "http://localhost:8080/doadores/juridico";
+          ? `http://localhost:8080/doadores/fisico`
+          : `http://localhost:8080/doadores/juridico`;
+          // console.log("Enviando dados do doador:", donator);
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(donator),
       });
       if (!response.ok) throw new Error("Erro ao atualizar doador");
       setIsEditing(false);
@@ -36,21 +54,20 @@ function DonatorProfile({ doador, onClose }) {
     }
   }
 
-  async function handleDelete() {
-    if (!window.confirm("Tem certeza que deseja excluir este doador?")) return;
-    try {
-      const response = await fetch(
-        `http://localhost:8080/doadores/${doador.id}`,
-        { method: "DELETE" }
-      );
-      if (!response.ok) throw new Error("Erro ao excluir doador");
-      onClose();
-      window.location.reload();
-    } catch (err) {
-      setErro("Erro ao excluir doador.");
-      console.error(err);
+    async function handleDelete() {
+        if (!window.confirm('Tem certeza que deseja excluir este doador?')) return;
+        try {
+            const response = await fetch(`http://localhost:8080/doadores/${doador.id}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) throw new Error('Erro ao excluir doador');
+            onClose();
+            window.location.reload();
+        } catch (err) {
+            console.error('Erro ao excluir doador:', err);
+            setErro('Erro ao excluir doador.');
+        }
     }
-  }
 
   return (
     <div className="donator-profile-modal">
@@ -60,11 +77,11 @@ function DonatorProfile({ doador, onClose }) {
 
         <div className="profile-card">
           <div className="profile-info"> {doador.tipo === "FISICO" ? (<>
-                <label>Nome <input type="text"  name="nome" value={form.nome || ""} onChange={handleChange} readOnly={!isEditing}/> </label>
-                <label>CPF <input type="text" name="cpf" value={form.cpf || ""} onChange={handleChange} readOnly={!isEditing}/> </label></>
+                <label>Nome <input type="text"  name="identificador" value={form.identificador} onChange={handleChange} readOnly={!isEditing}/> </label>
+                <label>CPF <input type="text" name="documento" value={form.documento} onChange={handleChange} readOnly /> </label></>
             ) : (<>
-            <label>Razão Social <input type="text" name="razaoSocial" value={form.razaoSocial || ""} onChange={handleChange} readOnly={!isEditing}/> </label>
-                <label>CNPJ <input type="text" name="cnpj" value={form.cnpj || ""} onChange={handleChange} readOnly={!isEditing} /> </label> </>
+            <label>Razão Social <input type="text" name="identificador" value={form.identificador} onChange={handleChange} readOnly={!isEditing}/> </label>
+                <label>CNPJ <input type="text" name="documento" value={form.documento} onChange={handleChange} readOnly /> </label> </>
             )}
           </div>
           
