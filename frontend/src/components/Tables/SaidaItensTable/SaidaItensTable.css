@@ -1,0 +1,51 @@
+.saida-itens-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.saida-itens-table th, .saida-itens-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.saida-itens-table th {
+  background-color: #3498db;
+  color: white;
+}
+
+.saida-itens-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.saida-itens-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.view-button {
+    width: 50px;
+    height: 20px;
+  border-radius: 8px;
+  background: #3498db;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff    ;
+}
+
+.view-button:hover {
+  color: black;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container label {
+  margin-right: 10px;
+}
+
+.search-container input {
+  margin-right: 10px;
+}

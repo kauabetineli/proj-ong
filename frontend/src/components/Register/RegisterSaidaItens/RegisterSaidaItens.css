@@ -1,0 +1,173 @@
+.register-saida-itens-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.register-saida-itens-content {
+    background: #fff;
+    padding: 36px 28px;
+    border-radius: 14px;
+    min-width: 350px;
+    max-width: 95vw;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+.register-saida-itens-content h2 {
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: 0.5px;
+}
+
+.register-saida-itens-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.register-saida-itens-content label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 15px;
+    gap: 5px;
+    color: #222;
+}
+
+.register-saida-itens-content input[type="text"],
+.register-saida-itens-content input[type="password"],
+.register-saida-itens-content input[type="date"],
+.register-saida-itens-content select {
+    margin-top: 2px;
+    padding: 11px 13px;
+    border: 1.5px solid #bfc9d1;
+    border-radius: 7px;
+    font-size: 15.5px;
+    background: #f8fafc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: #222;
+}
+
+.register-saida-itens-content input[type="text"]:focus,
+.register-saida-itens-content input[type="password"]:focus,
+.register-saida-itens-content input[type="date"]:focus,
+.register-saida-itens-content select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px #eaf6fb;
+}
+
+.register-saida-itens-content select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='16' height='16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px 18px;
+    cursor: pointer;
+}
+
+.register-saida-itens-content input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.4) sepia(1) saturate(5) hue-rotate(175deg);
+    cursor: pointer;
+}
+
+.register-saida-itens-content input[type="file"] {
+    margin-top: 2px;
+    padding: 7px 10px;
+    border: 1.5px solid #bfc9d1;
+    border-radius: 7px;
+    font-size: 15px;
+    background: #f8fafc;
+    cursor: pointer;
+    color: #222;
+}
+
+.register-saida-itens-content input[type="file"]::-webkit-file-upload-button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: background 0.2s;
+}
+
+.register-saida-itens-content input[type="file"]:hover::-webkit-file-upload-button {
+    background: #2980b9;
+}
+
+.register-saida-itens-content input[type="file"]::file-selector-button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: background 0.2s;
+}
+
+.register-saida-itens-content input[type="file"]:hover::file-selector-button {
+    background: #2980b9;
+}
+
+.register-saida-itens-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.register-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.07);
+}
+
+.register-btn:hover {
+    background: #2980b9;
+}
+
+.cancel-btn, .excluir-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.07);
+}
+
+.cancel-btn:hover, .excluir-btn:hover {
+    background: #c0392b;
+}
+
+.erro {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 4px;
+    text-align: center;
+    font-weight: 500;
+}

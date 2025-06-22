@@ -14,11 +14,12 @@ function Navbar() {
           <div className="nav-item dropdown">
             <span className="dropdown-title">GERENCIAR <span className="dropdown-arrow">▼</span></span>
             <div className="dropdown-content">
-              <a href="/beneficiarios">BENEFICIÁRIOS</a>
+              <Link to="/beneficiarios">BENEFICIÁRIOS</Link>
               <a href="#">DOAÇÕES</a>
-              <a href="/doadores">DOADORES</a>
+              <Link to="/doadores">DOADORES</Link>
               <Link to="/produtos">PRODUTOS</Link>
               <Link to="/estoque">ESTOQUE</Link>
+              <Link to="/saida-itens">SAÍDA DE ITENS</Link>
             {user?.tipoUsuario === 'ADMINISTRADOR' && (
               <Link to="/voluntarios">VOLUNTÁRIOS</Link>
             )}
