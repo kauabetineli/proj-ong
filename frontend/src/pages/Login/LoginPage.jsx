@@ -58,7 +58,7 @@ const handleLogin = async (e) => {
         
         <form onSubmit={handleLogin}>
           <div className="form-group">
-          <label>CPF<input type="text"placeholder="Digite seu CPF"value={cpf} onChange={handleCpfChange} /></label>
+          <label>CPF<input type="text" className="input-cpf" placeholder="Digite seu CPF"value={cpf} onChange={handleCpfChange} /></label>
           </div>
           
           <div className="form-group">

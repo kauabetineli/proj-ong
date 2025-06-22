@@ -22,7 +22,6 @@ function ManageDonator() {
       .then(data => setDonators(data))
       .catch(err => console.error('Erro ao buscar doadores:', err));
   }, []);
-
   const handleNewRegister = () => {
     setRegisterModalOpen(true);
   };

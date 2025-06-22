@@ -53,7 +53,7 @@ public class DoacaoController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Doacao> atualizarDoacao(
-            @PathVariable Integer id,
+            @PathVariable("id") Integer id,
             @RequestBody DoacaoCadastroDTO doacaoCadastroDTO) {
         try {
             Doacao doacaoAtualizada = service.atualizarDoacao(id, doacaoCadastroDTO);
@@ -67,7 +67,7 @@ public class DoacaoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirDoacao(
-            @PathVariable Integer id
+            @PathVariable("id") Integer id
     ) {
         try {
             service.excluirDoacao(id);

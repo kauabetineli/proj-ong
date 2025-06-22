@@ -75,12 +75,104 @@
     box-sizing: border-box;
 }
 
-.donation-items-list {
-    margin: 0 0 0 10px;
-    padding: 0;
-    list-style: disc inside;
-    color: #444;
-    font-size: 14px;
+/* Tabela de Itens da Doação */
+.donation-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.04);
+}
+
+.donation-items-table th, .donation-items-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.donation-items-table th {
+    background-color: #3498db;
+    color: #fff;
+    font-weight: 600;
+}
+
+.donation-items-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.donation-items-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Edição dos Itens */
+.donation-items-edit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.donation-item-edit-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f7f9fa;
+    border-radius: 6px;
+    padding: 6px 0 6px 8px;
+}
+
+.donation-item-edit-row select,
+.donation-item-edit-row input[type="number"] {
+    padding: 6px 8px;
+    border: 1px solid #bfc9d1;
+    border-radius: 4px;
+    font-size: 15px;
+    background: #fff;
+    min-width: 120px;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    transition: background 0.2s;
+}
+
+.remove-item-btn svg {
+    pointer-events: none;
+}
+
+.remove-item-btn:hover {
+    background: #ffeaea;
+}
+
+.add-item-btn {
+    margin-top: 5px;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 14px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s;
+}
+
+.add-item-btn:hover {
+    background: #1251a3;
 }
 
 .profile-actions {
@@ -135,4 +227,16 @@
     color: #e74c3c;
     font-size: 14px;
     margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .donation-profile-container {
+        width: 98vw;
+        min-width: unset;
+        padding: 8px;
+    }
+    .donation-profile-card {
+        flex-direction: column;
+        gap: 8px;
+    }
 }

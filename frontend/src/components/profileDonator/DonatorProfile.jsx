@@ -11,6 +11,14 @@ function DonatorProfile({ doador, onClose }) {
     setIsEditing(true);
   }
 
+  const getTipo = (documento) => {
+      if (!documento) return '';
+      return documento.length === 11 ? "FISICO" : "JURIDICO";
+    };
+
+  const tipo = getTipo(doador.documento);
+
+
   function handleChange(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -20,7 +28,7 @@ function DonatorProfile({ doador, onClose }) {
     try {
       // Converte o nome das variaveis de doador para enviar para a requisicao
       let donator;
-      if(doador.tipo === "FISICO") {
+      if(tipo === "FISICO") {
         donator = {
           id: form.id,
           nome: form.identificador,
@@ -36,7 +44,7 @@ function DonatorProfile({ doador, onClose }) {
       // console.log("Doador:", donator);
 
       const url =
-        doador.tipo === "FISICO"
+        tipo === "FISICO"
           ? `http://localhost:8080/doadores/fisico`
           : `http://localhost:8080/doadores/juridico`;
           // console.log("Enviando dados do doador:", donator);

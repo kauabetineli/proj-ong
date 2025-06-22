@@ -1,4 +1,4 @@
-.modal {
+.register-donation-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.modal form {
+.register-donation-modal form {
   background: #fff;
   padding: 32px 24px;
   border-radius: 10px;
@@ -23,14 +23,14 @@
   gap: 18px;
 }
 
-.modal h2 {
+.register-donation-modal h2 {
   margin-top: 0;
   margin-bottom: 8px;
   font-size: 1.5rem;
   color: #333;
 }
 
-.modal label {
+.register-donation-modal label {
   font-weight: 500;
   margin-bottom: 6px;
   display: flex;
@@ -38,8 +38,8 @@
   gap: 4px;
 }
 
-.modal input,
-.modal select {
+.register-donation-modal input,
+.register-donation-modal select {
   padding: 7px 10px;
   border: 1px solid #bbb;
   border-radius: 5px;
@@ -47,20 +47,20 @@
   margin-right: 8px;
 }
 
-.modal h3 {
+.register-donation-modal h3 {
   margin: 0 0 6px 0;
   font-size: 1.1rem;
   color: #444;
 }
 
-.modal div {
+.register-donation-modal div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.modal button[type="button"] {
-  background: #eee;
+.remove-btn {
+  background: #ffffff;
   border: none;
   color: #333;
   padding: 6px 12px;
@@ -69,32 +69,24 @@
   transition: background 0.2s;
 }
 
-.modal button[type="button"]:hover {
-  background: #e0e0e0;
+.remove-btn:hover {
+  background: #f0f0f0;
+  transition: ease-in 0.2s;
 }
 
-.modal button[type="submit"] {
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  padding: 7px 18px;
+.register-donation-actions {
   border-radius: 4px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
   transition: background 0.2s;
+  font-weight: 500;
+  padding: 7px 18px;
 }
 
-.modal button[type="submit"]:hover {
-  background: #125ea7;
-}
-
-.modal button[type="button"]:last-child {
-  background: #f44336;
-  color: #fff;
-  margin-left: 0;
-}
-
-.modal button[type="button"]:last-child:hover {
-  background: #c62828;
+.register-donation-actions button {
+  min-width: 120px;
+  padding: 10px;
+  box-sizing: border-box;
 }

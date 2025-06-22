@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./RegisterDonation.css";
 
-function DonationModal({ onClose }) {
+function DonationModal({ onClose, onSuccess }) {
   const [doadorId, setDoadorId] = useState("");
   const [itens, setItens] = useState([{ produtoId: "", quantidade: 1 }]);
   const [produtos, setProdutos] = useState([]);
@@ -18,8 +18,13 @@ function DonationModal({ onClose }) {
     setItens(newItens);
   };
 
-  const addItem = () => setItens([...itens, { produtoId: "", quantidade: 1 }]);
-  const removeItem = idx => setItens(itens.filter((_, i) => i !== idx));
+function addItem() {
+  setItens([...itens, { produtoId: "", quantidade: 1 }]);
+}
+
+function removeItem(idx) {
+  setItens(itens.filter((_, i) => i !== idx));
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,17 +40,15 @@ function DonationModal({ onClose }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(doacao)
     });
+    if(onSuccess) onSuccess();
     onClose();
   };
 
   return (
-    <div className="modal">
+    <div className="register-donation-modal">
       <form onSubmit={handleSubmit}>
         <h2>Nova Doação</h2>
-        <label>
-          Doador ID:
-          <input type="number" value={doadorId} onChange={e => setDoadorId(e.target.value)} required />
-        </label>
+        <label> Doador ID: <input type="number" value={doadorId} onChange={e => setDoadorId(e.target.value)} required /> </label>
 
         <h3>Itens</h3>
         {itens.map((item, idp) => (
@@ -64,15 +67,19 @@ function DonationModal({ onClose }) {
             </select>
             
             <input type="number" min={1} value={item.quantidade} onChange={e => handleItemChange(idp, "quantidade", e.target.value)} required placeholder="Quantidade" />
-            {itens.length > 1 && (<button type="button" onClick={() => removeItem(idp)}> Remover </button> )} 
+            {itens.length > 1 && (<button type="button" className="remove-btn" onClick={() => removeItem(idp)}>
+              <svg width="22" height="22" className="remove-icon" fill="#e74c3c" viewBox="0 0 24 24">
+                <path d="M9 3v1H4v2h16V4h-5V3H9zm-3 6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9H6zm2 2h2v8H8v-8zm4 0h2v8h-2v-8z"/>
+              </svg>
+            </button> )} 
 
             </div>))}
 
-        <button type="button" onClick={addItem}>Adicionar item</button>
-        <div>
-          <button type="submit">Salvar</button>
-          <button type="button" onClick={onClose}>Cancelar</button>
-        </div>
+        <button type="button" className="add-item-btn" onClick={addItem}> + Adicionar item</button>
+          <div className="register-donation-actions">
+            <button type="submit" className="save-btn">Salvar</button>
+            <button type="button" className="cancel-btn" onClick={onClose}>Cancelar</button>
+          </div>
       </form>
     </div>
   );
