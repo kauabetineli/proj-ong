@@ -5,6 +5,7 @@ function DonationModal({ onClose, onSuccess }) {
   const [doadorId, setDoadorId] = useState("");
   const [itens, setItens] = useState([{ produtoId: "", quantidade: 1 }]);
   const [produtos, setProdutos] = useState([]);
+  const [erro, setErro] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8080/produtos")
@@ -28,6 +29,7 @@ function removeItem(idx) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErro("");
     const doacao = {
       doadorId: Number(doadorId),
       itens: itens.map(item => ({
@@ -35,13 +37,19 @@ function removeItem(idx) {
         quantidade: Number(item.quantidade)
       }))
     };
-    await fetch("http://localhost:8080/doacoes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(doacao)
-    });
-    if(onSuccess) onSuccess();
-    onClose();
+    try {
+      const response = await fetch("http://localhost:8080/doacoes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(doacao)
+      });
+      if (!response.ok) throw new Error("Erro ao cadastrar doação");
+      if (onSuccess) onSuccess();
+      onClose();
+    } catch (err) {
+      setErro("Erro ao cadastrar doação. Verifique os dados.");
+      console.error("Erro ao cadastrar doação:", err);
+    }
   };
 
   return (
@@ -76,6 +84,9 @@ function removeItem(idx) {
             </div>))}
 
         <button type="button" className="add-item-btn" onClick={addItem}> + Adicionar item</button>
+
+        {erro && <div className="erro">{erro}</div>}
+
           <div className="register-donation-actions">
             <button type="submit" className="save-btn">Salvar</button>
             <button type="button" className="cancel-btn" onClick={onClose}>Cancelar</button>
