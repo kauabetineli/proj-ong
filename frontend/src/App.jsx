@@ -7,6 +7,7 @@ import ManageVoluntary from './pages/manage/ManageVoluntary/ManageVoluntary.jsx'
 import ManageBeneficiary from './pages/manage/ManageBeneficiary/ManageBeneficiary.jsx';
 import ManageDonator from './pages/manage/ManageDonators/ManageDonator.jsx';
 import ManageSaidaItens from './pages/manage/ManageSaidaItens/ManageSaidaItens.jsx';
+import ManageDonations from './pages/manage/ManageDonations/ManageDonations.jsx';
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -88,11 +89,20 @@ function App() {
         />
 
         <Route 
+          path="/doacoes" 
+          element={
+            <ProtectedRoute>
+              <ManageDonations />
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route 
           path="/saida-itens" 
           element={
-            <ProtectedRouteAdmin>
+            <ProtectedRoute>
               <ManageSaidaItens/>
-            </ProtectedRouteAdmin>
+            </ProtectedRoute>
           } 
         />
         <Route path="*" element={<Navigate to="/" />} />

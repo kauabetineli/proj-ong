@@ -2,6 +2,12 @@ import React from 'react';
 import './DonatorTable.css';
 
 const DonatorTable = ({ data, onView }) => {
+  
+  const getTipo = (documento) => {
+    if (!documento) return '';
+    return documento.length === 11 ? 'Físico' : 'Jurídico';
+  };
+
   return (
     <table className="donator-table">
       <thead>
@@ -17,7 +23,7 @@ const DonatorTable = ({ data, onView }) => {
         {data.map((donator) => (
           <tr key={donator.id}>
             <td>{donator.id}</td>
-            <td>{donator.tipo === 'FISICO' ? 'Físico' : 'Jurídico'}</td>
+            <td>{getTipo(donator.documento)}</td>
             <td>{donator.tipo === 'FISICO' ? donator.nome : donator.identificador}</td>
             <td>{donator.tipo === 'FISICO' ? donator.cpf : donator.documento}</td>
             <td>
