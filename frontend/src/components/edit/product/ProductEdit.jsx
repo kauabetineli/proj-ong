@@ -63,13 +63,13 @@ function ProductEdit({ product, onClose }) {
             <div className="edit-card">
                 <div className="edit-info">
                     <label> Nome <input type="text" name="nome" value={form.nome} onChange={handleChange} readOnly={!isEditing} /> </label>
-                    <label>Tipo de Medida:<select name="unidadeMedida" value={form.unidadeMedida} onChange={handleChange} required>
+                    <label>Tipo de Medida:<select name="unidadeMedida" value={form.unidadeMedida} onChange={handleChange} required disabled={!isEditing}>
                         {unidadeMedida.map(t => (
                             <option key={t} value={t}>{t}</option>
                         ))}
                     </select></label>
 
-                    <label>Classificação:<select name="classificacao" value={form.classificacao} onChange={handleChange} required>
+                    <label>Classificação:<select name="classificacao" value={form.classificacao} onChange={handleChange} required disabled={!isEditing}> 
                         {classificacao.map(t => (
                             <option key={t} value={t}>{t}</option>
                         ))}
