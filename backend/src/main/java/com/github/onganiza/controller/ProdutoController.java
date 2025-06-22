@@ -48,7 +48,7 @@ public class ProdutoController {
 
     // TODO Substituir esta função para uma de filtro dependendo do atributo/valor
     @GetMapping("/{id}")
-    public ResponseEntity<ProdutoDTO> buscarPorId(@PathVariable Integer id){
+    public ResponseEntity<ProdutoDTO> buscarPorId(@PathVariable(name = "id") Integer id){
         try {
             return ResponseEntity.ok(service.buscarPorId(id));
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletar(@PathVariable Integer id){
+    public ResponseEntity<String> deletar(@PathVariable(name = "id") Integer id){
         try {
             if(!service.produtoExiste(id)) return ResponseEntity.notFound().build();
 
