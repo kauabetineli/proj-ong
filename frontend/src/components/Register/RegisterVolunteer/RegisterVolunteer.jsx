@@ -70,26 +70,32 @@ function RegisterVolunteer({ onClose, onSuccess }) {
       <div className="register-volunteer-content">
         <h2>Cadastrar Voluntário</h2>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div className="register-volunteer-columns">
+          <div className="register-volunteer-col">
           <label>Nome:<input type="text" name="nome" value={form.nome} onChange={handleChange} required /></label>
           <label>CPF:<input type="text" name="cpf" value={form.cpf} onChange={handleChange} required /></label>
           <label>Senha:<input type="password" name="senha" value={form.senha} onChange={handleChange} required /></label>
           <label>Endereço:<input type="text" name="endereco" value={form.endereco} onChange={handleChange} required /></label>
-          <label>Setor:<select name="setor" value={form.setor} onChange={handleChange} required>
-              <option value="">Selecione...</option>
-              {setores.map(s => (
-                <option key={s} value={s}>{s}</option>
-              ))}
+          </div>
+
+          <div className="register-volunteer-col">
+            <label>Setor:<select name="setor" value={form.setor} onChange={handleChange} required>
+                <option value="">Selecione...</option>
+                {setores.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+                </select></label>
+
+            <label>Tipo de Usuário:<select name="tipoUsuario" value={form.tipoUsuario} onChange={handleChange} required>
+                {tiposUsuario.map(t => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
               </select></label>
-
-          <label>Tipo de Usuário:<select name="tipoUsuario" value={form.tipoUsuario} onChange={handleChange} required>
-              {tiposUsuario.map(t => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select></label>
-            
-          <label>Data de Nascimento:<input type="date" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} required /></label>
-          <label>Foto de Perfil:<input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /></label>
-
+              
+            <label>Data de Nascimento:<input type="date" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} required /></label>
+            <label>Foto de Perfil:<input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /></label>
+          </div>
+        </div>
           {erro && <div className="erro">{erro}</div>}
 
           <div className="register-volunteer-actions">

@@ -1,15 +1,29 @@
-.donation-profile-container {
+.donation-profile-modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: rgba(0,0,0,0.3);
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.donation-profile-container {
+    position: relative;
+    width: 90vw;
+    max-width: 500px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     z-index: 1000;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .profile-header {
@@ -232,8 +246,10 @@
 @media (max-width: 600px) {
     .donation-profile-container {
         width: 98vw;
-        min-width: unset;
+        max-width: 98vw;
+        min-width: 0;
         padding: 8px;
+        max-height: 98vh;
     }
     .donation-profile-card {
         flex-direction: column;
