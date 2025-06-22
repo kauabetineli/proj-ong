@@ -6,11 +6,18 @@ function DonationModal({ onClose, onSuccess }) {
   const [itens, setItens] = useState([{ produtoId: "", quantidade: 1 }]);
   const [produtos, setProdutos] = useState([]);
   const [erro, setErro] = useState("");
+  const [doadores, setDoadores] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8080/produtos")
       .then(res => res.json())
       .then(data => setProdutos(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/doadores")
+      .then(res => res.json())
+      .then(data => setDoadores(data));
   }, []);
 
   const handleItemChange = (idx, field, value) => {
@@ -51,21 +58,25 @@ function removeItem(idx) {
       console.error("Erro ao cadastrar doação:", err);
     }
   };
-
+  
   return (
     <div className="register-donation-modal">
       <form onSubmit={handleSubmit}>
         <h2>Nova Doação</h2>
-        <label> Doador ID: <input type="number" value={doadorId} onChange={e => setDoadorId(e.target.value)} required /> </label>
+        <h3>Doador</h3>
+        <select value={doadorId} onChange={e => setDoadorId(e.target.value)} required>
+          <option value="">Selecione o doador</option>
+          {doadores.map(doador => (
+            <option key={doador.id} value={doador.id}>
+              {doador.identificador}
+            </option>
+          ))}
+        </select>
 
         <h3>Itens</h3>
         {itens.map((item, idp) => (
           <div key={idp}>
-            <select
-              value={item.produtoId}
-              onChange={e => handleItemChange(idp, "produtoId", e.target.value)}
-              required
-            >
+            <select value={item.produtoId} onChange={e => handleItemChange(idp, "produtoId", e.target.value)} required>
               <option value="">Selecione o produto</option>
               {produtos.map(prod => (
                 <option key={prod.id} value={prod.id}>
