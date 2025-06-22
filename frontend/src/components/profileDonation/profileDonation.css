@@ -1,0 +1,138 @@
+.donation-profile-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 1000;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.donation-close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #888;
+    margin-left: 10px;
+}
+
+.donation-close-button:hover {
+    color: #e74c3c;
+}
+
+.donation-profile-card {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.donation-profile-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.donation-profile-info label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+.donation-profile-info input,
+.donation-profile-info select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+}
+
+.donation-profile-info textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.donation-items-list {
+    margin: 0 0 0 10px;
+    padding: 0;
+    list-style: disc inside;
+    color: #444;
+    font-size: 14px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.save-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.save-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.erro {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 10px;
+}

@@ -15,7 +15,7 @@ function Navbar() {
             <span className="dropdown-title">GERENCIAR <span className="dropdown-arrow">▼</span></span>
             <div className="dropdown-content">
               <Link to="/beneficiarios">BENEFICIÁRIOS</Link>
-              <a href="#">DOAÇÕES</a>
+              <a href="/doacoes">DOAÇÕES</a>
               <Link to="/doadores">DOADORES</Link>
               <Link to="/produtos">PRODUTOS</Link>
               <Link to="/estoque">ESTOQUE</Link>
