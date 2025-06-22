@@ -53,7 +53,7 @@ public class SaidaItemController {
 
     @PutMapping("/{id}")
     public ResponseEntity<SaidaItem> atualizar(
-            @PathVariable Integer id,
+            @PathVariable("id") Integer id,
             @RequestBody SaidaItem saidaItem
     ) {
         try {

@@ -26,12 +26,12 @@ function Navbar() {
             </div>
           </div>
           
-          <div className="nav-item dropdown">
+          {/* <div className="nav-item dropdown">
             <span className="dropdown-title">RELATÓRIO <span className="dropdown-arrow">▼</span></span>
             <div className="dropdown-content">
               <a href="#">DOAÇÕES</a>
             </div>
-          </div>
+          </div> */}
         </div>
         
         <div className="nav-right">
