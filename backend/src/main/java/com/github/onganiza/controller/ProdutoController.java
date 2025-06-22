@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/produtos")
@@ -51,6 +52,20 @@ public class ProdutoController {
     public ResponseEntity<ProdutoDTO> buscarPorId(@PathVariable(name = "id") Integer id){
         try {
             return ResponseEntity.ok(service.buscarPorId(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/busca")
+    public ResponseEntity<List<ProdutoDTO>> filtrarProdutos(
+            @RequestParam String chave,
+            @RequestParam String valor
+    ){
+        try {
+            Map<String, String> parametros = Map.of(chave, valor);
+            return ResponseEntity.ok(service.filtrar(parametros));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
