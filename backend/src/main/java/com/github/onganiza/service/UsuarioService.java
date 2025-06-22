@@ -78,53 +78,18 @@ public class UsuarioService {
         return true;
     }
 
-//    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO) {
-//        if(!usuarioExiste(usuarioAtualizaDTO.id())) return false;
-//        Optional<Usuario> usuarioAtt = repository.findById(usuarioAtualizaDTO.id());
-//
-//        Usuario usuario = mapper.toEntity(usuarioAtualizaDTO);
-//
-//        if(usuarioAtualizaDTO.senha() != null) {
-//            usuario.setSenha(usuarioAtualizaDTO.senha());
-//        } else {
-//            String usuarioSenha = repository.findById(usuarioAtualizaDTO.id()).get().getSenha();
-//            usuario.setSenha(usuarioSenha.getSenha().orElse);
-//        }
-//
-//        Optional<Usuario> usuarioAtt = repository.findById(usuarioAtualizaDTO.id());
-//
-//        if(usuarioAtt.isPresent()) {}
-//
-//        usuarioAtt.ifPresent(value -> usuario.setSenha(value.getSenha()));
-//
-//        repository.save(usuario);
-//
-//        return true;
-//    }
-
-//    public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO) {
-//        if(!usuarioExiste(usuarioAtualizaDTO.id())) return false;
-//
-//        Usuario usuarioAtt = mapper.toEntity(usuarioAtualizaDTO);
-//
-//        if(usuarioAtualizaDTO.senha().isBlank()){
-//            String senhaAtual = Objects.requireNonNull(repository.findById(usuarioAtualizaDTO.id()).orElse(null)).getSenha();
-//            usuarioAtt.setSenha(senhaAtual);
-//        } else{
-//            usuarioAtt.setSenha(usuarioAtualizaDTO.senha());
-//        }
-//
-//        repository.save(usuarioAtt);
-//        return true;
-//
-//    }
-
     public boolean atualizarUsuario(UsuarioAtualizaDTO usuarioAtualizaDTO){
         Optional<Usuario> usuarioOpcional = repository.findById(usuarioAtualizaDTO.id());
         // caso não encontre o usuario, interrompe a atualização
         if (usuarioOpcional.isEmpty()) return false;
 
         Usuario usuario = mapper.toEntity(usuarioAtualizaDTO);
+
+        // se nao houver foto te perfil na requisicao, seta ao usuario a ultima foto salva
+        if(usuarioAtualizaDTO.fotoPerfil() == null){
+            usuario.setFotoPerfil(usuarioOpcional.get().getFotoPerfil());
+        }
+
 
         System.out.println(usuarioAtualizaDTO.senha());
 
