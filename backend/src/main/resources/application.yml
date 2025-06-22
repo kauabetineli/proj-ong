@@ -12,7 +12,7 @@ spring:
 ##  spring.main.allow-circular-references to true
   jpa:
     hibernate:
-      ddl-auto: update  # ou create, create-drop, validate, none
+      ddl-auto: create  # ou create, create-drop, validate, none
     show-sql: true
     properties:
       hibernate:
