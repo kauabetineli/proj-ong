@@ -91,6 +91,25 @@
     color: #222;
 }
 
+.register-saida-itens-content input[type="number"] {
+    margin-top: 2px;
+    padding: 11px 13px;
+    border: 1.5px solid #bfc9d1;
+    border-radius: 7px;
+    font-size: 15.5px;
+    background: #f8fafc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: #222;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.register-saida-itens-content input[type="number"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px #eaf6fb;
+}
+
 .register-saida-itens-content input[type="file"]::-webkit-file-upload-button {
     background: #3498db;
     color: #fff;

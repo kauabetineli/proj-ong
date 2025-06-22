@@ -12,9 +12,9 @@
     background: #fff;
     padding: 36px 28px;
     border-radius: 14px;
-    min-width: 350px;
     max-width: 95vw;
     box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    min-width: 0;
 }
 
 .register-volunteer-content h2 {
@@ -26,7 +26,17 @@
     letter-spacing: 0.5px;
 }
 
-.register-volunteer-content form {
+.register-volunteer-form {
+    width: 100%;
+}
+
+.register-volunteer-columns {
+    display: flex;
+    gap: 24px;
+}
+
+.register-volunteer-col {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -125,7 +135,7 @@
 
 .register-volunteer-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 12px;
     margin-top: 12px;
 }
@@ -170,4 +180,27 @@
     margin-top: 4px;
     text-align: center;
     font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .register-volunteer-columns {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-volunteer-modal {
+    align-items: flex-start;
+    padding: 10px 0;
+  }
+  .register-volunteer-content {
+    min-width: 0;
+    width: 98vw;
+    max-width: 98vw;
+    padding: 12px 4vw;
+    box-sizing: border-box;
+    max-height: 98vh;
+    overflow-y: auto;
+  }
 }

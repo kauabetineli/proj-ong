@@ -78,43 +78,45 @@ function Profile({ volunteer, onClose }) {
         }
     }
     return (
-        <div className="profile-voluntary-container">
-            <div className="profile-voluntary-header">
-                <h2>Perfil</h2>
-                <button className="close-button" onClick={onClose}>X</button>
-                </div>
+        <div className='profile-voluntary-modal'>
+            <div className="profile-voluntary-container">
+                <div className="profile-voluntary-header">
+                    <h2>Perfil</h2>
+                    <button className="close-button" onClick={onClose}>X</button>
+                    </div>
 
-            <div className="profile-voluntary-card">
-                <div className="profile-voluntary-picture">
-                    <img src={volunteer.fotoPerfilBase64 ? `data:image/png;base64,${volunteer.fotoPerfilBase64}`
-                        : (volunteer.foto_perfil ? volunteer.foto_perfil : ProfilePic)} alt="Foto de Perfil" />
-                </div>
-                <div className="profile-voluntary-info">
-                    <label> Nome <input type="text" name="nome" value={form.nome} onChange={handleChange} readOnly={!isEditing} /> </label>
-                    <label> Data de Nascimento <input type="text" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} readOnly={!isEditing} /> </label>
-                    <label> CPF <input type="text" name="cpf" value={volunteer.cpf} readOnly/> </label> 
-                    {/* <label> Setor <input type="text" name="setor" value={form.setor} onChange={handleChange} readOnly={!isEditing} /> </label> */}
-                    <label>Setor{isEditing ? ( 
-                        <select name="setor" value={form.setor} onChange={handleChange} required>
-                            <option value="">Selecione...</option>
-                            {setores.map((item) => (
-                            <option key={item} value={item}>
-                                {item.replaceAll("_", " ")}
-                            </option>))}
-                        </select>) : (
-                            <input type="text" name="setor" value={form.setor} readOnly/>)}
-                        </label>
-                    <label> Endereço <input type="text" name="endereco" value={form.endereco} onChange={handleChange} readOnly={!isEditing} /> </label>
-                    {isEditing && ( 
-                        <label> Nova Foto de Perfil <input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /> </label>
-                        )}
-                    {erro && <div className="erro">{erro}</div>}
-                    <div className="profile-voluntary-actions">
-                        {!isEditing ? (
-                            <Button text="Editar" onClick={handleEdit} className="edit-btn" />) : (
-                            <Button text="Salvar Alterações" onClick={handleSave} className="save-btn" />
+                <div className="profile-voluntary-card">
+                    <div className="profile-voluntary-picture">
+                        <img src={volunteer.fotoPerfilBase64 ? `data:image/png;base64,${volunteer.fotoPerfilBase64}`
+                            : (volunteer.foto_perfil ? volunteer.foto_perfil : ProfilePic)} alt="Foto de Perfil" />
+                    </div>
+                    <div className="profile-voluntary-info">
+                        <label> Nome <input type="text" name="nome" value={form.nome} onChange={handleChange} readOnly={!isEditing} /> </label>
+                        <label> Data de Nascimento <input type="text" name="dataNascimento" value={form.dataNascimento} onChange={handleChange} readOnly={!isEditing} /> </label>
+                        <label> CPF <input type="text" name="cpf" value={volunteer.cpf} readOnly/> </label> 
+                        {/* <label> Setor <input type="text" name="setor" value={form.setor} onChange={handleChange} readOnly={!isEditing} /> </label> */}
+                        <label>Setor{isEditing ? ( 
+                            <select name="setor" value={form.setor} onChange={handleChange} required>
+                                <option value="">Selecione...</option>
+                                {setores.map((item) => (
+                                <option key={item} value={item}>
+                                    {item.replaceAll("_", " ")}
+                                </option>))}
+                            </select>) : (
+                                <input type="text" name="setor" value={form.setor} readOnly/>)}
+                            </label>
+                        <label> Endereço <input type="text" name="endereco" value={form.endereco} onChange={handleChange} readOnly={!isEditing} /> </label>
+                        {isEditing && ( 
+                            <label> Nova Foto de Perfil <input type="file" name="fotoPerfil" accept="image/*" onChange={handleChange} /> </label>
                             )}
-                        {!isUserLogged && (<Button text="Excluir" onClick={handleDelete} className="delete-btn" />)}
+                        {erro && <div className="erro">{erro}</div>}
+                        <div className="profile-voluntary-actions">
+                            {!isEditing ? (
+                                <Button text="Editar" onClick={handleEdit} className="edit-btn" />) : (
+                                <Button text="Salvar Alterações" onClick={handleSave} className="save-btn" />
+                                )}
+                            {!isUserLogged && (<Button text="Excluir" onClick={handleDelete} className="delete-btn" />)}
+                        </div>
                     </div>
                 </div>
             </div>
