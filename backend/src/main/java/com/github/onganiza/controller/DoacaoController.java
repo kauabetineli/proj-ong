@@ -16,13 +16,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DoacaoController {
 
-    private final DoacaoService doacaoService;
+    private final DoacaoService service;
 
     @GetMapping
     public ResponseEntity<List<DoacaoDTO>> listarDoacoes() {
         try {
-            List<DoacaoDTO> lista = doacaoService.listarDoacoes();
+            List<DoacaoDTO> lista = service.listarDoacoes();
             return ResponseEntity.ok(lista);
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DoacaoDTO> detalharDoacao(
+            @PathVariable(name = "id") Integer id
+    ) {
+        try {
+            return ResponseEntity.ok(service.detalharDoacao(id));
         } catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
@@ -32,7 +44,7 @@ public class DoacaoController {
     @PostMapping
     public ResponseEntity<Doacao> salvarDoacao(@RequestBody DoacaoCadastroDTO doacaoCadastroDTO) {
         try{
-            return ResponseEntity.ok(doacaoService.salvarDoacao(doacaoCadastroDTO));
+            return ResponseEntity.ok(service.salvarDoacao(doacaoCadastroDTO));
         } catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
@@ -44,7 +56,7 @@ public class DoacaoController {
             @PathVariable Integer id,
             @RequestBody DoacaoCadastroDTO doacaoCadastroDTO) {
         try {
-            Doacao doacaoAtualizada = doacaoService.atualizarDoacao(id, doacaoCadastroDTO);
+            Doacao doacaoAtualizada = service.atualizarDoacao(id, doacaoCadastroDTO);
             return ResponseEntity.ok(doacaoAtualizada);
         } catch (RuntimeException e){
             e.printStackTrace();
@@ -58,7 +70,7 @@ public class DoacaoController {
             @PathVariable Integer id
     ) {
         try {
-            doacaoService.excluirDoacao(id);
+            service.excluirDoacao(id);
             return ResponseEntity.ok().build();
         } catch (RuntimeException e){
             e.printStackTrace();
