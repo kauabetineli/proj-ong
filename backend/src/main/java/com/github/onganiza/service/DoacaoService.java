@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -53,6 +54,17 @@ public class DoacaoService {
 
         doacao.setItens(itens);
         return repository.save(doacao);
+    }
+
+    public DoacaoDTO detalharDoacao(Integer id) {
+        Optional<Doacao> doacao = repository.findById(id);
+
+        if(doacao.isEmpty()) return null;
+
+        DoacaoDTO doacaoDTO = mapper.toDto(doacao.get());
+
+        return doacaoDTO;
+
     }
 
     public List<DoacaoDTO> listarDoacoes() {

@@ -44,7 +44,7 @@ public class SaidaItemController {
             @PathVariable(name = "id") Integer id
     ){
         try {
-            return ResponseEntity.ok(service.detalharDoador(id));
+            return ResponseEntity.ok(service.detalharSaidaItem(id));
         } catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
@@ -66,11 +66,11 @@ public class SaidaItemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletar(
-            @PathVariable Integer id,
-            @RequestBody SaidaItem saidaItem
+            @PathVariable Integer id
+//            @RequestBody SaidaItem saidaItem
     ){
         try {
-            service.deletar(id, saidaItem);
+            service.deletar(id/*, saidaItem*/);
             return ResponseEntity.ok().build();
         } catch (Exception e){
             e.printStackTrace();
