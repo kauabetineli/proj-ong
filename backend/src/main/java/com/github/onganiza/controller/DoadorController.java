@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/doadores")
@@ -47,6 +48,20 @@ public class DoadorController {
     public ResponseEntity<List<DoadorListagemDTO>> listarTodos() {
         try {
             return ResponseEntity.ok(service.listarTodos());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/busca")
+    public ResponseEntity<List<DoadorListagemDTO>> filtrarDoadores(
+            @RequestParam String chave,
+            @RequestParam String valor
+    ){
+        try {
+            Map<String, String> parametros = Map.of(chave, valor);
+            return ResponseEntity.ok(service.filtrar(parametros));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
