@@ -66,7 +66,7 @@ public class SaidaItemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletar(
-            @PathVariable Integer id
+            @PathVariable(name = "id") Integer id
 //            @RequestBody SaidaItem saidaItem
     ){
         try {

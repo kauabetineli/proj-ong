@@ -56,8 +56,8 @@ public class DoadorController {
 
     @GetMapping("/busca")
     public ResponseEntity<List<DoadorListagemDTO>> filtrarDoadores(
-            @RequestParam String chave,
-            @RequestParam String valor
+            @RequestParam(name = "chave") String chave,
+            @RequestParam(name = "valor") String valor
     ){
         try {
             Map<String, String> parametros = Map.of(chave, valor);

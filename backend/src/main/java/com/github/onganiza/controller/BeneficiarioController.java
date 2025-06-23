@@ -48,8 +48,8 @@ public class BeneficiarioController {
 
     @GetMapping("/busca")
     public ResponseEntity<List<BeneficiarioDTO>> filtrarUsuarios(
-            @RequestParam String chave,
-            @RequestParam String valor
+            @RequestParam(name = "chave") String chave,
+            @RequestParam(name = "valor") String valor
     ) {
         try {
             Map<String, String> parametros = Map.of(chave, valor);
@@ -62,7 +62,7 @@ public class BeneficiarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<BeneficiarioDetalhesDTO>> buscarPorId(
-            @PathVariable Integer id
+            @PathVariable(name = "id") Integer id
     ) {
         return ResponseEntity.ok(service.buscarPorId(id));
     }

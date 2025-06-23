@@ -24,13 +24,6 @@ public class ProdutoService {
     private final ProdutoRepository repository;
     private final ProdutoMapper mapper;
     private final EstoqueRepository estoqueRepository;
-//    private final EstoqueService estoqueService;
-
-//    public ProdutoDTO salvar(ProdutoCadastroDTO produtoCadastroDTO) {
-//        Produto produtoSalvo = repository.save(mapper.toEntity(produtoCadastroDTO));
-//        estoqueService.criarEstoque(produtoSalvo);
-//        return mapper.toDto(produtoSalvo);
-//    }
 
     public List<ProdutoDTO> listarTodos(){
         return repository.findAll()

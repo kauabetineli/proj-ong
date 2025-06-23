@@ -54,8 +54,8 @@ public class UsuarioController {
 
     @GetMapping("/busca")
     public ResponseEntity<List<UsuarioDTO>> filtrarUsuarios(
-            @RequestParam String chave,
-            @RequestParam String valor
+            @RequestParam(name = "chave") String chave,
+            @RequestParam(name = "valor") String valor
     ) {
         Map<String, String> parametros = Map.of(chave, valor);
         return ResponseEntity.ok(service.filtrarUsuarios(parametros));
@@ -64,7 +64,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarUsuario(
-            @PathVariable Integer id
+            @PathVariable(name = "id") Integer id
     ) {
         boolean usuarioDeletado = service.deletarUsuario(id);
         if (usuarioDeletado) {
@@ -95,17 +95,5 @@ public class UsuarioController {
         }
 
     }
-
-//    public boolean ehMaiorDeIdade(LocalDate dataNascimentoUsuario){
-//        LocalDate dataAtual = LocalDate.now();
-//        Period periodo = Period.between(dataNascimentoUsuario, dataAtual);
-//        System.out.println(
-//                "Dias: " + periodo.getDays() + "\n" +
-//                "Meses: " + periodo.getMonths() + "\n" +
-//                "Anos: " + periodo.getYears());
-//        int idadeUsuario = periodo.getYears();
-//        System.out.println("Idade do usuario: " + idadeUsuario);
-//        return idadeUsuario >= 18;
-//    }
 
 }

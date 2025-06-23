@@ -28,8 +28,8 @@ public class EstoqueController {
 
     @GetMapping("/busca")
     public ResponseEntity<List<EstoqueProdutoDTO>> filtrarEstoque(
-            @RequestParam String chave,
-            @RequestParam String valor
+            @RequestParam(name = "chave") String chave,
+            @RequestParam(name = "valor") String valor
     ) {
         Map<String, String> parametros = Map.of(chave, valor);
         return ResponseEntity.ok(service.filtrarEstoque(parametros));
