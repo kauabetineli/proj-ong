@@ -34,7 +34,8 @@ ONGaniza é uma aplicação que desenvolvida em React + Spring Boot que permite 
    yarn install
 
 3. **Inicie o Servidor**
-    ```npm run dev
+    ```bash
+    npm run dev
     #ou 
     yarn dev
 
