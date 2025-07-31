@@ -1,5 +1,3 @@
-Repositório para projeto na disciplina de Engenharia de Software II na Universidade do Vale do Itajaí (UNIVALI)
-
 ## Alunos:
 Felipe Muller Schvuchov - fmuller@edu.univali.br
 
@@ -105,6 +103,26 @@ Se você precisar alterar essas configurações, edite o arquivo `src/main/resou
    ```
 
 A aplicação estará disponível em `http://localhost:8080`.
+
+---
+
+## Criação de um usuário inicial
+
+Abra o pgAdmin, e em uma nova Query para o banco de Dados ONGaniza, faça a inserção do seguinte registro válido para utilização do sistema:
+
+INSERT INTO usuario (nome, cpf, senha, data_nascimento, endereco, setor, tipo_usuario, data_cadastro, data_atualizacao) 
+VALUES (
+    'Administrador Sistema',
+    '12345678900',
+    'senha123',
+    '1990-01-01',
+    'Rua Exemplo, 123 - Cidade',
+    'COORDENACAO',
+    'ADMINISTRADOR',
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP
+);
+
 
 ---
 
